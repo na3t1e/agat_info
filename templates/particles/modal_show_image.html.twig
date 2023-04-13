@@ -1,0 +1,24 @@
+<div class="modal modal-lg  fade" tabindex="-1" id="exampleModalCaroulsel">
+    <div class="modal-dialog modal-fullscreen-lg-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="image">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    function launchModalPhoto(image, name) {
+        let orderModal = new bootstrap.Modal(document.getElementById('exampleModalCaroulsel'), {})
+        document.getElementById('image').innerHTML =
+            `<img src="` + '/uploads/' + image +
+            `" class="d-block w-100" alt="...">`;
+        document.getElementById('modalLabel').innerText = name;
+        orderModal.toggle();
+    }
+</script>

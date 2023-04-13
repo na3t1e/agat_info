@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Form\ContactType;
 use App\Repository\ContactRepository;
@@ -28,7 +28,7 @@ class AdminContactController extends AbstractController
                 return $this->redirectToRoute($request->get('_route'), $request->query->all());
             }
         }
-        return $this->render('admin_contact/index.html.twig', [
+        return $this->render('admin/contact.html.twig', [
             'controller_name' => 'AdminContactController',
             'contacts' => $contacts
         ]);

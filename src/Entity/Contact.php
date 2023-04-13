@@ -28,7 +28,7 @@ class Contact
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $wa = null;
 
-    #[ORM\Column(length: 9, nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $workTime = null;
 
     #[ORM\Column(length: 255, nullable: true)]

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta name="description" content="">
+
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <style>
+        .ui-resizable-helper {
+            border: 2px dotted #00F;
+        }
+
+        body {
+            font-family: "Roboto", sans-serif !important;
+            background-color: #212529 !important;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto', sans-serif !important;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $("#resizable").resizable({
+                animate: true,
+                containment: "#offcanvasTop",
+                helper: "ui-resizable-helper"
+            });
+        });
+    </script>
+
+</head>
+<body>
+<button class="btn text-primary-emphasis" id="sidebarBtn" onclick="openSidebar();" type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasScrolling"
+        aria-controls="offcanvasScrolling"><i class="bi bi-list fs-1"></i></button>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
+     id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header bg-primary">
+        <h5 class="offcanvas-title text-white">Меню администратора</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body px-0">
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
+            <li class="nav-item">
+                <a href="" class="nav-link text-truncate">
+                    <i class="fs-5 bi-globe2"></i><span class="ms-1 d-sm-inline">SEO</span>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <i class="fs-5 bi-calculator"></i><span class="ms-1 d-sm-inline">Калькуляторы</span>
+                </a>
+                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
+                    <li><a class="dropdown-item text-start" href="/admin/calc/profList">ПРОФНАСТИЛ</a></li>
+                    <li><a class="dropdown-item text-start" href="#">ДЕРЕВО</a></li>
+                    <li><a class="dropdown-item text-start" href="#">МЕТАЛЛИЧЕСКИЙ ШТАКЕТНИК</a></li>
+                    <li><a class="dropdown-item text-start" href="#">СЕТКА РАБИЦА</a></li>
+                    <li><a class="dropdown-item text-start" href="#">ОТКАТНЫЕ ВОРОТА</a></li>
+
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <i class="bi bi-file-earmark-code fs-5"></i><span class="ms-1 d-sm-inline">Страницы</span>
+                </a>
+                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
+                    <li><a class="dropdown-item text-start" href="">Главная</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link text-truncate">
+                    <i class="bi bi-file-earmark-person fs-5"></i><span class="ms-1 d-sm-inline">Заявки</span>
+                    <span class="badge bg-warning"></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link text-truncate">
+                    <i class="bi bi-star fs-5"></i><span class="ms-1 d-sm-inline">Отзывы</span>
+                    <span class="badge bg-warning"></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link text-truncate">
+                    <i class="bi bi-bag fs-5"></i><span class="ms-1 d-sm-inline">Товары</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link text-truncate">
+                    <i class="bi bi-archive-fill fs-5"></i><span class="ms-1 d-sm-inline">Категории</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link text-truncate">
+                    <i class="bi bi-person-lines-fill fs-5"></i><span class="ms-1 d-sm-inline">Контакты</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link text-truncate">
+                    <i class="bi bi-percent fs-5"></i><span class="ms-1 d-sm-inline">Акции</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link text-truncate">
+                    <i class="bi bi-menu-button-wide fs-5"></i><span class="ms-1 d-sm-inline">Списки меню</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link text-truncate">
+                    <i class="bi bi-camera-fill fs-5"></i><span class="ms-1 d-sm-inline">Фотографии</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link text-truncate">
+                    <i class="bi bi-columns fs-5"></i><span class="ms-1 d-sm-inline">Услуги</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link text-truncate">
+                    <i class="bi bi-house fs-5"></i><span class="ms-1 d-sm-inline">Главная страница</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+</div>
+<div id="body" class="container-fluid">
+    {% block body %}
+    {% endblock %}
+</div>
+<script>
+    let sidebarBool = false;
+
+    function openSidebar() {
+        sidebarBool = !sidebarBool;
+        if (sidebarBool) {
+            //$("#sidebarBtn").addClass("btn-success");
+        } else {
+
+        }
+        sidebarBool = !sidebarBool;
+    }
+</script>
+
+</body>
+</html>

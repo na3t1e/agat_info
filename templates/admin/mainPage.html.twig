@@ -1,0 +1,65 @@
+{% extends 'baseAdmin.html.twig' %}
+{% form_theme mainPageForm 'bootstrap_5_layout.html.twig' %}
+{% block title %}Какрасыч | Администратор - SEO{% endblock %}
+
+{% block body %}
+    {{ form_start(mainPageForm) }}
+    <div class="row">
+
+        <div class="col-sm-12 col-md-6">
+            {{ form_row(mainPageForm.mainText) }}
+            <p>
+                Символов осталось: <span class="text-info GFG">{{500 - mainPage.mainText|length }}</span>
+            </p>
+            {{ form_row(mainPageForm.images) }}
+
+            <div class="row">
+                {% if mainPage.images is not null and mainPage.images is not empty %}
+                    {% for i in mainPage.images %}
+                        <div class="col-2 ms-3 p-0" style="height: 150px; background: url({{ asset('uploads/'~i|url_encode) }}) no-repeat; background-size: contain;">
+                            <div onclick="launchModalPhoto('{{ i }}','')"
+                                 class="btn btn-success p-1 rounded-0 float-start fs-7"
+                                 style="line-height: 9px">
+                                <i class="bi bi-arrows-fullscreen fs-7"></i>
+                            </div>
+                            <div onclick="window.location = '{{ path('app_admin_pages_main_page_delete_image', {name:i}) }}'" class="btn btn-danger p-1 rounded-0 float-end fs-6" style="line-height: 9px">x</div>
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+
+        </div>
+        <div class="col-sm-12 col-md-6">
+            {{ form_row(mainPageForm.advantage1) }}
+            {{ form_row(mainPageForm.advantage2) }}
+            {{ form_row(mainPageForm.advantage3) }}
+        </div>
+        {{ form_row(mainPageForm.save) }}
+
+
+    </div>
+    {{ form_end(mainPageForm) }}
+
+    <script>
+        $(document).ready(function () {
+            var max_length = 500;
+            $('iframe').contents().find('p').keyup(function () {
+                var len = max_length - $(this).val().length;
+                $('.GFG').text(len);
+                if (len < 0) {
+                    $('#main_page_save').addClass('disabled')
+                    $('.GFG').removeClass('text-info')
+                    $('.GFG').addClass('text-danger')
+                } else {
+                    $('#main_page_save').removeClass('disabled')
+                    $('.GFG').removeClass('text-danger')
+                    $('.GFG').addClass('text-info')
+                }
+            });
+
+        });
+    </script>
+    {% include('./particles/modal_show_image.html.twig') %}
+{% endblock %}
