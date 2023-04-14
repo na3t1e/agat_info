@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-12 text-center fs-5">
+        <marquee behaviour="slide" direction="right" onfinish="finishLoop" class="pt-1">
+            <div class="row align-content-between text-primary-emphasis">
+                <div class="col-auto ">
+                    г. Санкт-Петербург
+                </div>
+
+            </div>
+
+        </marquee>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-info p-3 sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_main') }}">
+            <img height="75" src="{{ asset('svg/logo.svg') }}">
+        </a>
+        <div class="d-inline-block">
+            <div class="col-12">
+                <div class="row">
+                </div>
+            </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class=" collapse navbar-collapse " id="navbarNavDropdown">
+
+            <ul class="navbar-nav ms-auto me-auto fs-5">
+                <li class="nav-item">
+                    <a class="nav-link mx-2"
+                       aria-current="page" href="">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2"
+                       aria-current="page" href="">Услуги</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2"
+                       aria-current="page" href="">Отзывы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2"
+                       aria-current="page" href="">Контакты</a>
+                </li>
+
+                {#                {% for menu in menuService.getMenu %} #}
+                {#                    {% if menu.isEnabled %} #}
+                {#                        <li class="nav-item"> #}
+                {#                            <a class="nav-link mx-2 {% if app.request.pathinfo == menu.link %}active{% endif %}" #}
+                {#                               aria-current="page" href="{{ menu.link }}">{{ menu.title }}</a> #}
+                {#                        </li> #}
+                {#                    {% endif %} #}
+                {#                {% endfor %} #}
+
+            </ul>
+            <span class="navbar-text">
+                Navbar text with an inline element
+            </span>
+        </div>
+    </div>
+</nav>
