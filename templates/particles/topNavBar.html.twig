@@ -1,37 +1,42 @@
 <style>
     @media (min-width: 992px) {
         #navbarNavDropdown {
-            display: none!important;
+            display: none !important;
             width: 0 !important;
         }
     }
 </style>
-<nav class="navbar navbar-expand-lg navbar-light p-0 sticky-top">
+<nav class="navbar navbar-expand-lg bg-white navbar-light p-0 sticky-top border-bottom   pt-1">
 
-    <div class="container-fluid">
-        <a class="navbar-brand me-5" href="{{ path('app_main') }}">
+    <div class="container-fluid ">
+        <a class="navbar-brand me-5 revealator-slideright revealator-once" href="{{ path('app_main') }}">
             <img height="85" src="{{ asset('svg/logo.svg') }}">
         </a>
 
-        <div class="">
-            <div class="d-none d-lg-block">
-                <div class="fs-4 mb-3 text-center">
-                    Санкт-Петербург
+        <div class="row revealator-slidedown revealator-once">
+            <div class="d-none d-lg-block p-0 mt-3">
+                <div class="fs-4 mb-1 text-center text-dark-blue">
+                    г. Санкт-Петербург
                 </div>
                 <div class="navbar-nav d-none d-lg-flex ms-auto me-auto">
-                    <div class="row">
-                        <div class="col-auto fs-5">
-                            Главная
-                        </div>
-                        <div class="col-auto fs-5">
-                            Главная
-                        </div>
-                        <div class="col-auto fs-5">
-                            Главная
-                        </div>
-                        <div class="col-auto bg-primary-subtle fs-5 ">
-                            Главная
-                        </div>
+                    <div class="row mt-1">
+                        {% for menu in menuService.getMenu %}
+                            {% if menu.isEnabled %}
+                                <div class="col-auto ps-1 pe-1 mx-1 fs-5
+                                    border-top rounded-top-3
+                                    {% if app.request.pathinfo == menu.link %}
+                                    active
+                                    bg-dark-blue
+
+                                    {% else %}
+                                    bg-light-blue
+                                    {% endif %}">
+                                    <a class="nav-link mx-0 text-white" aria-current="page" href="{{ menu.link }}">
+                                        {{ menu.title }}
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -43,16 +48,40 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <div class="d-sm-flex d-lg-none">
-                Saint-Petegsburg
+            <div class="row">
+                <div class="col-6">
+                    <ul class="navbar-nav ms-auto me-auto fs-5">
+                        {% for menu in menuService.getMenu %}
+                            {% if menu.isEnabled %}
+                                <li class="nav-item">
+                                    <a class="nav-link mx-2 {% if app.request.pathinfo == menu.link %}active{% endif %}"
+                                       aria-current="page" href="{{ menu.link }}">{{ menu.title }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-6 mt-2 float-end text-end ">
+                    <span class="text-dark-blue d-block fs-5">Контакты:</span>
+                    <span class="fs-6">
+                    akagat@yandex.ru<br>
+                    +79216423639<br>
+                    +79216423639
+                    </span>
+                    <div class="col-auto align-self-center mt-2">
+                        <div class="btn btn-light-blue rounded-0" onclick="window.location='{{ path('app_admin_main') }}'">
+                            Вход для<br> сотрудников
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
 
-        <span class="navbar-text p-0 d-none d-lg-flex">
-            <div class="row gap-3 ">
+        <div class="navbar-text p-0 d-none d-lg-flex revealator-slideleft revealator-once">
+            <div class="row gap-5 ">
                 <div class="col-auto">
-                    <span class="text-primary-emphasis d-block fs-5">Контакты:</span>
+                    <span class="text-dark-blue d-block fs-5">Контакты:</span>
                     <span class="fs-6">
                     akagat@yandex.ru<br>
                     +79216423639<br>
@@ -60,13 +89,12 @@
                     </span>
                 </div>
                 <div class="col-auto align-self-center">
-                    <div class="btn btn-primary">
+                    <div class="btn btn-light-blue rounded-0" onclick="window.location='{{ path('app_admin_main') }}'">
                         Вход для<br> сотрудников
                     </div>
                 </div>
             </div>
-        </span>
+        </div>
 
 
 </nav>
-<hr class="m-0">

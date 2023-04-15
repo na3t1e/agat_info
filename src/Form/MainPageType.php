@@ -39,7 +39,7 @@ class MainPageType extends AbstractType
                     'label' => $this->translator->trans('general.mainText'),
                     'constraints' => [
                         new Length([
-                            'max' => 500,
+                            'max' => 2000,
                         ])
                     ]
                 ])

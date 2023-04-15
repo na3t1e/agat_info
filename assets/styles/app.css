@@ -1,7 +1,9 @@
 html {
     overflow-x: hidden;
+
 }
 body {
+    font-family: "Segoe UI 400", sans-serif!important;
     zoom: 100%;
     background-color: #FFFFFF!important;
 }
@@ -17,5 +19,65 @@ body {
 #offcanvasBottom {
     height: 80vh!important;
 }
+
+.bg-light-blue {
+    background-color: #529AC6;
+}
+
+.bg-dark-blue {
+    background-color: #045F86;
+}
+
+.text-light-blue {
+    color: #529AC6;
+}
+
+.text-dark-blue {
+    color: #045F86;
+}
+
+.btn-light-blue {
+    color: white;
+    background-color: #529AC6;
+}
+
+.btn-dark-blue {
+    color: white;
+    background-color: #045F86;
+}
+
+.btn-light-blue:hover {
+    color: white;
+    background-color: #045F86;
+}
+
+.btn-dark-blue {
+    color: white;
+    background-color: #529AC6;
+}
+
+.shadow-white {
+    box-shadow: 1px 1px 20px white;
+}
+.video-container {
+    position: relative;
+}
+.video-container video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(100%) blur(1px);
+}
+
+.text-shadow-white {
+    text-shadow: #FFFFFF 1px 0 10px;
+}
+
+.text-shadow-dark {
+    text-shadow: #000000 1px 0 5px;
+}
+
 
 

@@ -40,6 +40,8 @@
 </head>
 <body>
 {% include 'particles/topNavBar.html.twig' %}
+    {% block noncontainer %}
+    {% endblock %}
 <div class="container  mt-5">
     {% block body %}
     {% endblock %}
@@ -56,7 +58,7 @@
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4" onclick="window.location='{{ path('app_main') }}'">
-                        <img width="32" class="me-3" src="{{ asset('svg/logo.svg') }}" >Каркасыч
+                        <img height="90" class="me-0" src="{{ asset('svg/logo.svg') }}" >
                     </h6>
                     <div class="footer-text">
 {#                        {{ mainPageService.getMainPage.mainText|raw }}#}

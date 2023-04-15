@@ -1,1 +1,42 @@
 {% extends 'base.html.twig' %}
+
+{% block noncontainer %}
+    <div class="row mt-0 video-container">
+        <video autoplay muted loop preload="auto" type="video/mp4" class="h-100">
+            <source src="{{ asset('videos/video.mp4') }}">
+        </video>
+    <div class="w-100 p-0 p-lg-5 " >
+        <div class="row mt-0 mb-0 mt-lg-5 mb-lg-5">
+            <div class="col-11 col-lg-8 ms-auto me-auto mt-0 mb-5">
+                <div class="row">
+                <div class="col-12 col-lg-6 revealator-slideright revealator-once">
+                    <a class="" href="{{ path('app_main') }}">
+                        <img class="img-fluid"  src="{{ asset('svg/logo.svg') }}">
+                    </a>
+                </div>
+                <div class="col-12 col-lg-6 text-white text-shadow-dark revealator-slideleft revealator-once">
+                    {{ mainPage.mainText|raw }}
+                </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+    <script>
+        const vid = document.querySelector("video");
+        vid.addEventListener("timeupdate", (e) => {
+            if (e.target.currentTime >= 16) {
+                e.target.currentTime = 0.0;
+            }
+        });
+        $("video").each(function () {
+            this.loop = false;
+            this.onended = function () {
+                this.load();
+            };
+            this.play();
+        });
+    </script>
+{% endblock %}
