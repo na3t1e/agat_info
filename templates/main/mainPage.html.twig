@@ -2,7 +2,7 @@
 
 {% block noncontainer %}
     <div class="row mt-0 video-container">
-        <video autoplay muted loop preload="auto" type="video/mp4" class="h-100">
+        <video autoplay muted loop preload="none" poster="{{ asset('images/skies.png') }}" type="video/mp4" class="h-100">
             <source src="{{ asset('videos/video.mp4') }}">
         </video>
     <div class="w-100 p-0 p-lg-5 " >
@@ -14,7 +14,7 @@
                         <img class="img-fluid"  src="{{ asset('svg/logo.svg') }}">
                     </a>
                 </div>
-                <div class="col-12 col-lg-6 text-white text-shadow-dark revealator-slideleft revealator-once">
+                <div class="col-12 col-lg-6 text-white text-shadow-dark revealator-slideleft revealator-delay2 revealator-once ">
                     {{ mainPage.mainText|raw }}
                 </div>
                 </div>

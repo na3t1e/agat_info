@@ -6,14 +6,14 @@
         }
     }
 </style>
-<nav class="navbar navbar-expand-lg bg-white navbar-light p-0 sticky-top border-bottom   pt-1">
+<nav class="navbar navbar-expand-lg bg-white navbar-light p-0 sticky-top border-bottom pt-1">
 
     <div class="container-fluid ">
-        <a class="navbar-brand me-5 revealator-slideright revealator-once" href="{{ path('app_main') }}">
-            <img height="85" src="{{ asset('svg/logo.svg') }}">
+        <a class="navbar-brand me-5" href="{{ path('app_main') }}">
+            <img height="85" src="{{ asset('svg/logo.svg') }}" alt="logo">
         </a>
 
-        <div class="row revealator-slidedown revealator-once">
+        <div class="row ">
             <div class="d-none d-lg-block p-0 mt-3">
                 <div class="fs-4 mb-1 text-center text-dark-blue">
                     г. Санкт-Петербург
@@ -69,7 +69,8 @@
                     +79216423639
                     </span>
                     <div class="col-auto align-self-center mt-2">
-                        <div class="btn btn-light-blue rounded-0" onclick="window.location='{{ path('app_admin_main') }}'">
+                        <div class="btn btn-light-blue rounded-0"
+                             onclick="window.location='{{ path('app_admin_main') }}'">
                             Вход для<br> сотрудников
                         </div>
                     </div>
@@ -78,7 +79,7 @@
         </div>
 
 
-        <div class="navbar-text p-0 d-none d-lg-flex revealator-slideleft revealator-once">
+        <div class="navbar-text p-0 d-none d-lg-flex">
             <div class="row gap-5 ">
                 <div class="col-auto">
                     <span class="text-dark-blue d-block fs-5">Контакты:</span>
@@ -95,6 +96,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
 </nav>
