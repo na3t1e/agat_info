@@ -15,8 +15,11 @@
                                 <img class="img-fluid " src="{{ asset('svg/logo.svg') }}">
                             </div>
                         </div>
-                        <div class="col-12 col-lg-6 text-white text-shadow-dark wow fadeInRightBig" data-wow-duration="2s">
+                        <div class="col-11 col-lg-6">
+                        <div class="col-1"></div>
+                        <div class="col-12 text-white p-2 text-shadow-dark wow fadeInRightBig" data-wow-duration="2s">
                             {{ mainPage.mainText|raw }}
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -41,8 +44,8 @@
 {% endblock %}
 {% block body %}
     <h2 class="text-center">Наши преимущества</h2>
-    <div class="row row-cols-1 row-gap-4 justify-content-around row-cols-lg-3 h-100 mb-2 row-eq-height">
-        <div class="col-12 col-lg-3-5 text-center shadow-blue-outer pt-5 wow fadeInDown">
+    <div class="row row-cols-1 px-2 px-md-0 row-gap-4 justify-content-around row-cols-lg-3 h-100 mb-2 row-eq-height">
+        <div class="col-12 col-lg-3-5 text-center shadow-blue-outer pt-5 wow fadeInLeft">
             <h2 class="fs-1 text-dark-blue text-shadow-dark-light ">1</h2>
             <p class="pt-5 pb-4">{{ mainPage.advantage1 }}</p>
         </div>
@@ -50,7 +53,7 @@
             <h2 class="fs-1 text-dark-blue text-shadow-dark-light ">2</h2>
             <p class="pt-5 pb-4">{{ mainPage.advantage2 }}</p>
         </div>
-        <div class="col-12 col-lg-3-5 text-center shadow-blue-outer pt-5 wow fadeInDown">
+        <div class="col-12 col-lg-3-5 text-center shadow-blue-outer pt-5 wow fadeInRight">
             <h2 class="fs-1 text-dark-blue text-shadow-dark-light ">3</h2>
             <p class="pt-5 pb-4">{{ mainPage.advantage3 }}</p>
         </div>
