@@ -1,148 +1,181 @@
-{#{% form_theme orderForm 'bootstrap_5_layout.html.twig' %}#}
+{# {% form_theme orderForm 'bootstrap_5_layout.html.twig' %} #}
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
-{#    <meta name="robots" content="{{ seo.robots|default('index, follow') }}"/>#}
-{#    <meta name="description" content="{{ seo.description|default('Пустое описание') }}">#}
-{#    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">#}
-{#    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">#}
-{#    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">#}
-{#    <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">#}
-{#    <link rel="mask-icon" href="{{ asset('favicon/safari-pinned-tab.svg') }}" color="#5bbad5">#}
-{#    <meta name="msapplication-TileColor" content="#da532c">#}
-{#    <meta name="theme-color" content="#ffffff">#}
-{#    <meta property="og:title" content="Каркасыч" />#}
-{#    <meta property="og:type" content="website" />#}
-{#    <meta property="og:url" content="{{ app.request.uri }}" />#}
-{#    <meta property="og:image" content="https://karkasich.ru/images/og-light.jpg" />#}
+    {#    <meta name="robots" content="{{ seo.robots|default('index, follow') }}"/> #}
+    {#    <meta name="description" content="{{ seo.description|default('Пустое описание') }}"> #}
+    {#    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}"> #}
+    {#    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}"> #}
+    {#    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}"> #}
+    {#    <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}"> #}
+    {#    <link rel="mask-icon" href="{{ asset('favicon/safari-pinned-tab.svg') }}" color="#5bbad5"> #}
+    {#    <meta name="msapplication-TileColor" content="#da532c"> #}
+    {#    <meta name="theme-color" content="#ffffff"> #}
+    {#    <meta property="og:title" content="Каркасыч" /> #}
+    {#    <meta property="og:type" content="website" /> #}
+    {#    <meta property="og:url" content="{{ app.request.uri }}" /> #}
+    {#    <meta property="og:image" content="https://karkasich.ru/images/og-light.jpg" /> #}
 
-{#    <meta name="twitter:card" content="summary_large_image">#}
-{#    <meta property="twitter:url" content="{{ app.request.uri }}">#}
-{#    <meta name="twitter:title" content="Какрасыч">#}
-{#    <meta name="twitter:description" content="Многие хотят себе классные заборы, навесы, ворота и так далее! Так вот, мы готовы предоставить вам это!">#}
-{#    <meta name="twitter:image" content="https://karkasich.ru/images/og-light.jpg">#}
+    {#    <meta name="twitter:card" content="summary_large_image"> #}
+    {#    <meta property="twitter:url" content="{{ app.request.uri }}"> #}
+    {#    <meta name="twitter:title" content="Какрасыч"> #}
+    {#    <meta name="twitter:description" content="Многие хотят себе классные заборы, навесы, ворота и так далее! Так вот, мы готовы предоставить вам это!"> #}
+    {#    <meta name="twitter:image" content="https://karkasich.ru/images/og-light.jpg"> #}
     {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js"
-            type="text/javascript"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    {#    <link rel="stylesheet" href="http://getbootstrap.com.vn/examples/equal-height-columns/equal-height-columns.css" /> #}
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('assetsToConnect/animate.min.css') }}">
+    <script src="{{ asset('assetsToConnect/wow.min.js') }}"></script>
+    <script>
+        new WOW().init();
+    </script>
 </head>
 <body>
 {% include 'particles/topNavBar.html.twig' %}
-    {% block noncontainer %}
-    {% endblock %}
+<span id="topBody "></span>
+{% block noncontainer %}
+{% endblock %}
+
 <div class="container  mt-5">
     {% block body %}
     {% endblock %}
 </div>
-<hr>
-<footer class="text-center text-lg-start bg-white text-muted">
+
+<footer class="text-center text-lg-start bg-white text-muted" id="footer">
 
     <!-- Section: Links  -->
-    <section class="">
+    <section class="bg-dark-blue text-white wow fadeInLeft">
         <div class="container text-center text-md-start mt-5">
             <!-- Grid row -->
-            <div class="row mt-3">
+            <div class="row mt-5 pt-4">
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <div class="col-md-3 col-lg-4 col-xl-3  mb-4">
                     <!-- Content -->
-                    <h6 class="text-uppercase fw-bold mb-4" onclick="window.location='{{ path('app_main') }}'">
-                        <img height="90" class="me-0" src="{{ asset('svg/logo.svg') }}" >
+                    <h6 class="text-uppercase fw-bold pe-3 pt-1 h-100 bg-white text-center"
+                        onclick="window.location='{{ path('app_main') }}'">
+                        <img class="img-fluid" src="{{ asset('svg/logo.svg') }}">
                     </h6>
                     <div class="footer-text">
-{#                        {{ mainPageService.getMainPage.mainText|raw }}#}
+                        {#                        {{ mainPageService.getMainPage.mainText|raw }} #}
                     </div>
                 </div>
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4">
+                <div class="col-12 col-md-2 col-lg-1 ms-lg-5 text-center text-lg-start mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">
                         Меню
                     </h6>
-                    <div class="row row-cols-lg-2">
-{#                        {% for menu in menuService.getMenu %}#}
-{#                            {% if menu.isEnabled %}#}
-{#                                <div class="col-sm-12 col-lg-5 mt-2">#}
-{#                                    <a class="text-reset {% if app.request.pathinfo == menu.link %}active{% endif %}"#}
-{#                                       aria-current="page" href="{{ menu.link }}">{{ menu.title }}</a>#}
-{#                                </div>#}
-{#                            {% endif %}#}
-{#                        {% endfor %}#}
+                    <div class="row">
+                        {% for menu in menuService.getMenu %}
+                            {% if menu.isEnabled %}
+                                <div class="col-sm-12">
+                                    <a class="text-reset text-decoration-none {% if app.request.pathinfo == menu.link %}active{% endif %}"
+                                       aria-current="page" href="{{ menu.link }}">{{ menu.title }}</a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
-                <!-- Grid column -->
+                <div class="col-12 col-md-5 ms-lg-5 text-center text-lg-start mb-4">
+                    <div class="row text-center align-middle h-100 mt-md-5">
+                        <h2 class="fs-1">г. Санкт-Петербург</h2>
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 col-lg-1 ms-lg-5 text-center text-lg-start mb-4">
+                    <!-- Links -->
+                    <div class=" text-md-end">
+                    <h6 class="text-uppercase fw-bold mb-4 ">
+                        Контакты
+                    </h6>
+                    <div class="row">
+                        {% for menu in menuService.getMenu %}
+                            {% if menu.isEnabled %}
+                                <div class="col-sm-12 ">
+                                    <a class="text-reset text-decoration-none {% if app.request.pathinfo == menu.link %}active{% endif %}"
+                                       aria-current="page" href="{{ menu.link }}">{{ menu.title }}</a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    </div>
+                </div>
 
                 <!-- Grid column -->
-{#                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">#}
-{#                    <!-- Links -->#}
-{#                    <h6 class="text-uppercase fw-bold mb-4">Контакты</h6>#}
-{#                    <p>#}
-{#                        <i class="bi bi-geo-alt-fill text-light-green"></i>{{ contactService.getContacts.geo }}#}
-{#                    </p>#}
-{#                    {% if contactService.getContacts.email %}#}
-{#                        <p>#}
-{#                            <i class="bi bi-envelope-fill text-light-green"></i>#}
-{#                            <a href="mailto:{{ contactService.getContacts.email }}">#}
-{#                                {{ contactService.getContacts.email }}#}
-{#                            </a>#}
-{#                        </p>#}
-{#                    {% endif %}#}
-{#                    {% if contactService.getContacts.number1 %}#}
-{#                        <p>#}
 
-{#                            <i class="bi bi-phone-fill text-light-green"></i>#}
-{#                            <a href="tel:{{ contactService.getContacts.number1 }}">#}
-{#                                {{ contactService.getContacts.number1 }}#}
-{#                            </a>#}
-{#                        </p>#}
-{#                    {% endif %}#}
-{#                    {% if contactService.getContacts.number2 %}#}
-{#                        <p>#}
+                <!-- Grid column -->
+                {#                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4"> #}
+                {#                    <!-- Links --> #}
+                {#                    <h6 class="text-uppercase fw-bold mb-4">Контакты</h6> #}
+                {#                    <p> #}
+                {#                        <i class="bi bi-geo-alt-fill text-light-green"></i>{{ contactService.getContacts.geo }} #}
+                {#                    </p> #}
+                {#                    {% if contactService.getContacts.email %} #}
+                {#                        <p> #}
+                {#                            <i class="bi bi-envelope-fill text-light-green"></i> #}
+                {#                            <a href="mailto:{{ contactService.getContacts.email }}"> #}
+                {#                                {{ contactService.getContacts.email }} #}
+                {#                            </a> #}
+                {#                        </p> #}
+                {#                    {% endif %} #}
+                {#                    {% if contactService.getContacts.number1 %} #}
+                {#                        <p> #}
 
-{#                            <i class="bi bi-phone text-light-green"></i>#}
-{#                            <a href="tel:{{ contactService.getContacts.number2 }}">#}
-{#                                {{ contactService.getContacts.number2 }}#}
-{#                            </a>#}
-{#                        </p>#}
-{#                    {% endif %}#}
-{#                    {% if contactService.getContacts.number3 %}#}
-{#                        <p>#}
+                {#                            <i class="bi bi-phone-fill text-light-green"></i> #}
+                {#                            <a href="tel:{{ contactService.getContacts.number1 }}"> #}
+                {#                                {{ contactService.getContacts.number1 }} #}
+                {#                            </a> #}
+                {#                        </p> #}
+                {#                    {% endif %} #}
+                {#                    {% if contactService.getContacts.number2 %} #}
+                {#                        <p> #}
 
-{#                            <i class="bi bi-phone text-light-green"></i>#}
-{#                            <a href="tel:{{ contactService.getContacts.number3 }}">#}
-{#                                {{ contactService.getContacts.number3 }}#}
-{#                            </a>#}
-{#                        </p>#}
-{#                    {% endif %}#}
-{#                    <p>#}
-{#                        {% if contactService.getContacts.tg %}#}
-{#                            <a class="text-decoration-none fs-3" href="{{ contactService.getContacts.tg }}">#}
-{#                                <i class="bi bi-telegram text-light-green"></i>#}
-{#                            </a>#}
-{#                        {% endif %}#}
-{#                        {% if contactService.getContacts.wa %}#}
-{#                            <a class="text-decoration- fs-3" href="{{ contactService.getContacts.wa }}">#}
-{#                                <i class="bi bi-whatsapp text-decoration-none text-light-green"></i>#}
-{#                            </a>#}
-{#                        {% endif %}#}
-{#                    </p>#}
-{#                </div>#}
+                {#                            <i class="bi bi-phone text-light-green"></i> #}
+                {#                            <a href="tel:{{ contactService.getContacts.number2 }}"> #}
+                {#                                {{ contactService.getContacts.number2 }} #}
+                {#                            </a> #}
+                {#                        </p> #}
+                {#                    {% endif %} #}
+                {#                    {% if contactService.getContacts.number3 %} #}
+                {#                        <p> #}
+
+                {#                            <i class="bi bi-phone text-light-green"></i> #}
+                {#                            <a href="tel:{{ contactService.getContacts.number3 }}"> #}
+                {#                                {{ contactService.getContacts.number3 }} #}
+                {#                            </a> #}
+                {#                        </p> #}
+                {#                    {% endif %} #}
+                {#                    <p> #}
+                {#                        {% if contactService.getContacts.tg %} #}
+                {#                            <a class="text-decoration-none fs-3" href="{{ contactService.getContacts.tg }}"> #}
+                {#                                <i class="bi bi-telegram text-light-green"></i> #}
+                {#                            </a> #}
+                {#                        {% endif %} #}
+                {#                        {% if contactService.getContacts.wa %} #}
+                {#                            <a class="text-decoration- fs-3" href="{{ contactService.getContacts.wa }}"> #}
+                {#                                <i class="bi bi-whatsapp text-decoration-none text-light-green"></i> #}
+                {#                            </a> #}
+                {#                        {% endif %} #}
+                {#                    </p> #}
+                {#                </div> #}
                 <!-- Grid column -->
             </div>
-            <p class="text-secondary mt-3 text-center">Предложения, представленные на сайте <a href="{{ path('app_main') }}">akagat.ru</a>, не являются публичной офертой</p>
+            <p class="text-white mt-3 text-center">Предложения, представленные на сайте <a
+                        href="{{ path('app_main') }}">akagat.ru</a>, не являются публичной офертой</p>
             <!-- Grid row -->
         </div>
     </section>
@@ -150,11 +183,13 @@
 
     <!-- Copyright -->
 
-    <!-- Copyright -->  
+    <!-- Copyright -->
     <script>
         $('.footer-text').find('*').css('font-size', '1em')
     </script>
+
 </footer>
 <!-- Footer -->
+
 </body>
 </html>

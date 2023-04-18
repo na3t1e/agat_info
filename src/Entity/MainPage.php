@@ -17,13 +17,13 @@ class MainPage
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $mainText = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $advantage1 = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $advantage2 = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $advantage3 = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
