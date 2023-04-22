@@ -15,4 +15,4 @@ import './js/bootstrap.bundle.min.js';
 
 // start the Stimulus application
 import './bootstrap';
-import 'controllers/jquery';
+import './controllers/jquery';

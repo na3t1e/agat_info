@@ -29,8 +29,11 @@ class AdminContactController extends AbstractController
             }
         }
         return $this->render('admin/contact.html.twig', [
+            'contactEditForm'=>$contactEditForm,
             'controller_name' => 'AdminContactController',
             'contacts' => $contacts
         ]);
     }
+
+
 }

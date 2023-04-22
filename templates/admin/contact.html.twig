@@ -1,15 +1,26 @@
 {% extends 'baseAdmin.html.twig' %}
-
-{% block title %}Hello AdminContactController!{% endblock %}
+{% form_theme contactEditForm 'bootstrap_5_layout.html.twig' %}
+{% block title %}Администратор - Контакты {% endblock %}
 
 {% block body %}
+    {{ form_start(contactEditForm) }}
+    <div class="row">
+
+    </div>
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(contactEditForm.number1) }}
+        {{ form_row(contactEditForm.number2) }}
+        {{ form_row(contactEditForm.email) }}
+        {{ form_row(contactEditForm.tg) }}
+        {{ form_row(contactEditForm.wa) }}
+        {{ form_row(contactEditForm.workTime) }}
+        {{ form_row(contactEditForm.address) }}
+        {{ form_row(contactEditForm.area) }}
+    </div>
+    {{ form_row(contactEditForm.save) }}
 
 
-<div class="row">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    </div>
+    {{ form_end(contactEditForm) }}
 
-    This friendly message is coming from:
-    <ul>
-    </ul>
-</div>
 {% endblock %}
