@@ -1,0 +1,74 @@
+{% extends 'baseAdmin.html.twig' %}
+{% form_theme menuForm 'bootstrap_5_layout.html.twig' %}
+{% block title %}АК АГАТ | Администратор - Товары{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <h1 class="text-center mb-5">Меню</h1>
+    </div>
+
+    <div class="offcanvas offcanvas-bottom " tabindex="-1" id="offcanvasBottom" data-bs-backdrop="true"
+         aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Изменить запись</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            {{ form(menuForm) }}
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for m in menu %}
+                <div class="col-auto mb-3">
+                    <ul class="list-group" onclick='openEditForm(
+                            "{{ m.id }}",
+                            "{{ m.title }}",
+                            "{{ m.link }}",
+                    {{ m.isEnabled|default(0) }}
+                            )'>
+                        <li class="list-group-item">
+                            <span class="text-secondary">Наименование: </span>{{ m.title }}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="text-secondary">Активно: </span>
+                            {% if m.isEnabled == 1 %}
+                                <span class="text-success">Да</span>
+                            {% else %}
+                                <span class="text-danger">Нет</span>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            {% endfor %}
+            <div class="row" id="imagesRow"></div>
+        </div>
+    </div>
+
+    <script>
+
+
+        function openEditForm(id, title, link , isEnabled) {
+            event.stopPropagation()
+            var myOffcanvas = document.getElementById('offcanvasBottom')
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+            bsOffcanvas.show()
+            document.getElementById('menu_id').value = id;
+            document.getElementById('menu_title').value = title;
+            document.getElementById('menu_link').value = link;
+
+            if (isEnabled === 1) {
+                document.getElementById('menu_isEnabled').checked = true;
+            }
+
+
+        }
+
+        function deleteProduct(id) {
+            window.location = '/admin/product/delete/' + id
+        }
+    </script>
+
+
+{% endblock %}

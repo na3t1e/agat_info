@@ -37,7 +37,7 @@ class AdminMainPageController extends AbstractController{
             return $this->redirectToRoute($request->get('_route'), $request->query->all());
         }
         return $this->render('admin/mainPage.html.twig', [
-            'controller_name' => 'Каркасыч (Админ - Страницы - Главная)',
+            'controller_name' => 'Агат (Админ - Страницы - Главная)',
             'description' => 'Админка',
             'mainPage' => $mainPage,
             'mainPageForm' => $mainPageForm->createView(),

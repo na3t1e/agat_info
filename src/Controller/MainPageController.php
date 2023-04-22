@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainPageController extends AbstractController
 {
-    #[Route('/', name: 'app_main_page')]
+    #[Route('/', name: 'app_main')]
     public function index(MainPageRepository $mainPageRepository): Response
     {
         $mainPage = $mainPageRepository->findAll()[0];

@@ -44,7 +44,7 @@
 
     <script>
         $(document).ready(function () {
-            var max_length = 500;
+            var max_length = 2000;
             $('iframe').contents().find('p').keyup(function () {
                 var len = max_length - $(this).val().length;
                 $('.GFG').text(len);

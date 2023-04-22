@@ -39,7 +39,7 @@ class MainPageType extends AbstractType
                     'label' => $this->translator->trans('general.mainText'),
                     'constraints' => [
                         new Length([
-                            'max' => 500,
+                            'max' => 2000,
                         ])
                     ]
                 ])
@@ -47,7 +47,7 @@ class MainPageType extends AbstractType
                 'label' => $this->translator->trans('general.advantage1'),
                 'constraints' => [
                     new Length([
-                        'max' => 200,
+                        'max' => 1000,
                     ])
                 ]
             ])
@@ -55,7 +55,7 @@ class MainPageType extends AbstractType
                 'label' => $this->translator->trans('general.advantage2'),
                 'constraints' => [
                     new Length([
-                        'max' => 200,
+                        'max' => 1000,
                     ])
                 ]
             ])
@@ -63,7 +63,7 @@ class MainPageType extends AbstractType
                 'label' => $this->translator->trans('general.advantage3'),
                 'constraints' => [
                     new Length([
-                        'max' => 200,
+                        'max' => 1000,
                     ])
                 ]
             ])
