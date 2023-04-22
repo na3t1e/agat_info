@@ -1,23 +1,21 @@
 {% extends 'base.html.twig' %}
 {% block title %}Контакты{% endblock %}
 
-{% block body %}
+{% block noncontainer %}
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-lg-4 text-center">
                 <div><img class="img-contacts" src="svg/Group 2.svg"></div>
-                <p class="text-contacts">
-                    <a class="text-success" href="tel:{{ contacts.number1 }}">{{ contacts.number1 }}</a>
-                    {% if contacts.number2 %}
-                        <a class="text-success" href="tel:{{ contacts.number2 }}">{{ contacts.number2 }}</a>
-                    {% endif %}
-                </p>
+                <a class="text-contacts" href="tel:{{ contacts.number1 }}">{{ contacts.number1 }}</a>
+                {% if contacts.number2 %}
+                    <br>
+                    <a class="text-contacts" href="tel:{{ contacts.number2 }}">{{ contacts.number2 }}</a>
+                {% endif %}
             </div>
             {% if contacts.email %}
                 <div class="col-sm-12 col-lg-4  text-center">
                     <div><img class="img-contacts" src="svg/Group 3.svg"></div>
-                    <p class="text-contacts"><a class="text-success"
-                                                href="mailto:{{ contacts.email }}">{{ contacts.email }}</a></p>
+                    <a class="text-contacts" href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
                 </div>
             {% endif %}
             {% if contacts.workTime %}
@@ -31,13 +29,13 @@
             {% if contacts.wa %}
                 <div class="col-sm-12 col-lg-4  text-center">
                     <div><img class="img-contacts" src="svg/Group.svg"></div>
-                    <p class="text-contacts" href="{{ contacts.wa }}">Написать в WhatsApp</p>
+                    <a class="text-contacts" href="{{ contacts.wa }}">Написать в WhatsApp</a>
                 </div>
             {% endif %}
             {% if contacts.tg %}
                 <div class="col-sm-12 col-lg-4  text-center">
                     <div><img class="img-contacts" src="svg/Layer_1.svg"></div>
-                    <p class="text-contacts" href="{{ contacts.tg }}">Написать в Telegram</p>
+                    <a class="text-contacts" href="{{ contacts.tg }}">Написать в Telegram</a>
                 </div>
             {% endif %}
             {% if contacts.address %}

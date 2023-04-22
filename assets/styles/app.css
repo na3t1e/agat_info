@@ -100,5 +100,22 @@ body {
     }
 }
 
+.container {
+    background-color: #529AC6;
+    padding: 0;
+    padding-top: 50px;
+    width: 1110px;
+}
+.text-contacts {
+    color: white;
+    text-align: center;
+    font-family: Segoe UI;
+    font-weight: lighter;
+    padding-bottom: 30px;
+}
+.img-contacts {
+    padding-bottom: 10px;
+}
+
 
 
