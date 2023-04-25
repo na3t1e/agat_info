@@ -20,7 +20,7 @@ class FeedbackController extends AbstractController
     {
 
 
-        $feedbackForm = $this->createForm(FeedbackWriteType::class);
+        $feedbackForm = $this->createForm(FeedbackType::class);
         $feedbackForm->handleRequest($request);
         if ($feedbackForm->isSubmitted()) {
             if ($feedbackForm->isValid()) {
@@ -30,7 +30,7 @@ class FeedbackController extends AbstractController
                 return $this->redirect($request->getUri());
             }
         }
-        $feedbackCreateForm = $this->createForm(FeedbackType::class);
+        $feedbackCreateForm = $this->createForm(FeedbackWriteType::class);
         $feedbackCreateForm->handleRequest($request);
         if ($feedbackCreateForm->isSubmitted()) {
             if ($feedbackCreateForm->isValid()) {
