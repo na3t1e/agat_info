@@ -36,7 +36,7 @@ class FeedbackEditType extends AbstractType
                 'required' => false,
                 'stars' => 5,
             ])
-            ->add('image', FileType::class, [
+            ->add('images', FileType::class, [
                 'multiple' => 'multiple',
                 'required' => false,
                 'mapped' => false,
