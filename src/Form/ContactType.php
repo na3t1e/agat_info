@@ -34,7 +34,6 @@ class ContactType extends AbstractType
             ->add('wa', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.wa')])
             ->add('workTime', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.workTime')])
             ->add('address', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.address')])
-            ->add('area', TextType::class, ['required' => false,'label' => $this->translator->trans('general.area')])
             ->add('save', SubmitType::class, ['label' => $this->translator->trans('general.save')]);
     }
 

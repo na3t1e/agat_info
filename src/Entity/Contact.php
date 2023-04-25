@@ -34,8 +34,6 @@ class Contact
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $address = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $area = null;
 
     public function getId(): ?int
     {
@@ -122,18 +120,6 @@ class Contact
     public function setAddress(?string $address): self
     {
         $this->address = $address;
-
-        return $this;
-    }
-
-    public function getArea(): ?string
-    {
-        return $this->area;
-    }
-
-    public function setArea(?string $area): self
-    {
-        $this->area = $area;
 
         return $this;
     }
