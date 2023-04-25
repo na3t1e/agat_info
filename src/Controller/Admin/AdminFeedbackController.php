@@ -12,15 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminFeedbackController extends AbstractController
 {
-    #[Route('/admin/feedback', name: 'app_admin_feedbacks')]
-    public function index(): Response
-    {
-        return $this->render('admin_feedback/index.html.twig', [
-            'controller_name' => 'AdminFeedbackController',
-        ]);
-    }
-
-    #[Route('/admin/feedbacks', name: 'app_admin_feedback')]
+    #[Route('/admin/feedbacks', name: 'app_admin_feedbacks')]
     public function getFeedback(FeedbackRepository     $feedbackRepository,
                                 Request                $request,
                                 EntityManagerInterface $entityManager): Response
@@ -28,8 +20,11 @@ class AdminFeedbackController extends AbstractController
         $newFeedbacks = $feedbackRepository->findBy([
             "status" => "notChecked"
         ]);
-        $readFeedbacks = $feedbackRepository->findBy([
-            "status" => "published"
+        $activeFeedbacks = $feedbackRepository->findBy([
+            "status" => "active"
+        ]);
+        $archivedFeedbacks = $feedbackRepository->findBy([
+            "status" => "archived"
         ]);
         $feedbackEditForm = $this->createForm(FeedbackEditType::class);
         $feedbackEditForm->handleRequest($request);
@@ -62,27 +57,40 @@ class AdminFeedbackController extends AbstractController
                 }
             }
         }
-        return $this->render('admin/feedbacks.html.twig', [
+        return $this->render('admin/feedback.html.twig', [
             'controller_name' => 'AdminFeedbackController',
             'newFeedbacks' => $newFeedbacks,
-            'readFeedbacks' => $readFeedbacks,
-            '$feedbackEditForm' => $feedbackEditForm->createView()
+            'activeFeedbacks' => $activeFeedbacks,
+            'archivedFeedbacks' => $archivedFeedbacks,
+            'feedbackEditForm' => $feedbackEditForm->createView()
         ]);
     }
 
-    #[Route('/admin/feedbacks/publish/{id}', name: 'app_admin_feedbacks_publish')]
-    public function publishFeedback(FeedbackRepository     $feedbackRepository,
-                                                           $id,
-                                    EntityManagerInterface $entityManager): Response
+    #[Route('/admin/feedbacks/activate/{id}', name: 'app_admin_feedback_activate')]
+    public function activeFeedback(FeedbackRepository     $feedbackRepository,
+                                                          $id,
+                                   EntityManagerInterface $entityManager): Response
     {
         $feedback = $feedbackRepository->find($id);
-        $feedback->setStatus("published");
+        $feedback->setStatus("active");
         $entityManager->persist($feedback);
         $entityManager->flush();
         return $this->redirectToRoute("app_admin_feedbacks");
     }
 
-    #[Route('/admin/feedbacks/delete/{id}', name: 'app_admin_feedbacks_delete')]
+    #[Route('/admin/feedbacks/archive/{id}', name: 'app_admin_feedback_archive')]
+    public function archiveFeedback(FeedbackRepository     $feedbackRepository,
+                                                           $id,
+                                    EntityManagerInterface $entityManager): Response
+    {
+        $feedback = $feedbackRepository->find($id);
+        $feedback->setStatus("archived");
+        $entityManager->persist($feedback);
+        $entityManager->flush();
+        return $this->redirectToRoute("app_admin_feedbacks");
+    }
+
+    #[Route('/admin/feedbacks/delete/{id}', name: 'app_admin_feedback_delete')]
     public function deleteReview(FeedbackRepository     $feedbackRepository,
                                                         $id,
                                  EntityManagerInterface $entityManager): Response
@@ -93,7 +101,7 @@ class AdminFeedbackController extends AbstractController
         return $this->redirectToRoute("app_admin_feedbacks");
     }
 
-    #[Route('/admin/pages/feedbacks/{id}/delete/image/{name}', name: 'app_admin_pages_feedbacks_delete_image')]
+    #[Route('/admin/pages/feedbacks/{id}/delete/image/{name}', name: 'app_admin_pages_feedback_delete_image')]
     public function deleteFeedbackImage(FeedbackRepository     $feedbackRepository,
                                         EntityManagerInterface $entityManager,
                                                                $id,

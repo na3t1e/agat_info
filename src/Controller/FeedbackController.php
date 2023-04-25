@@ -13,15 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class FeedbackController extends AbstractController
 {
-    #[Route('/feedbacks', name: 'app_feedbacks')]
-    public function index(): Response
-    {
-        return $this->render('feedback/index.html.twig', [
-            'controller_name' => 'FeedbackController',
-        ]);
-    }
-
-    #[Route('/feedbacks', name: 'app_feedbacks')]
+      #[Route('/feedbacks', name: 'app_feedbacks')]
     public function getFeedbacks(Request                $request,
                                  EntityManagerInterface $entityManager,
                                  FeedbackRepository     $feedbackRepository)
@@ -62,8 +54,9 @@ class FeedbackController extends AbstractController
                 return $this->redirectToRoute($request->get('_route'), $request->query->all());
             }
         }
-        return $this->render('main/reviews.html.twig',
+        return $this->render('main/feedback.html.twig',
             [
+                'controller_name' => 'FeedbackController',
                 'feedbacks' => $feedbackRepository->findBy(['status' => 'published']),
                 'feedbackForm' => $feedbackForm->createView(),
                 'feedbackCreateForm' => $feedbackCreateForm->createView(),
@@ -74,7 +67,7 @@ class FeedbackController extends AbstractController
     public function getFeedback(FeedbackRepository $feedbackRepository,
                                                    $id)
     {
-        return $this->render('particles/modal_review_caroulsel.html.twig', [
+        return $this->render('particles/modal_feedback_caroulsel.html.twig', [
         ]);
     }
 }
