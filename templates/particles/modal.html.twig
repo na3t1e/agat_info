@@ -1,0 +1,37 @@
+<div class="modal fade" tabindex="-1" id="exampleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            {{ form_start(feedbackForm) }}
+            <div class="modal-body">
+                {{ form_label(feedbackForm.name) }}<span class="text-danger">*</span>
+                {{ form_errors(feedbackForm.name) }}
+                {{ form_widget(feedbackForm.name) }}
+                {{ form_help(feedbackForm.name) }}
+
+                {{ form_label(feedbackForm.text) }}<span class="text-danger">*</span>
+                {{ form_errors(feedbackForm.text) }}
+                {{ form_widget(feedbackForm.text) }}
+                {{ form_help(feedbackForm.text) }}
+
+                <div class="mt-2">{{ form_row(feedbackForm.rating) }}</div>
+                {{ form_row(feedbackForm.images) }}
+            </div>
+            <div class="modal-footer">
+                {{ form_row(feedbackForm.save) }}
+            </div>
+            {{ form_end(feedbackForm) }}
+        </div>
+    </div>
+</div>
+
+<script>
+    function launchModal(actionText) {
+        let orderModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+        })
+        document.getElementById('feedback_actionText').value = actionText;
+        orderModal.toggle();
+    }
+</script>
