@@ -16,14 +16,27 @@ use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class FeedbackWriteType extends AbstractType
 {
+    private TranslatorInterface $translator;
+
+    /**
+     * @param TranslatorInterface $translator
+     */
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class,)
+            ->add('name', TextType::class, [
+                'label' => $this->translator->trans('general.name')])
             ->add('text', TextareaType::class, [
+                'label' => $this->translator->trans('general.text'),
                 'help' => 'Осталось символов: 1000',
                 'attr' => [
                     'rows' => 7,
@@ -33,11 +46,13 @@ class FeedbackWriteType extends AbstractType
                         'max' => 1000,
                     ])
                 ]])
-            ->add('rating',  StarRatingType::class,[
+            ->add('rating', StarRatingType::class, [
+                'label' => $this->translator->trans('general.rating'),
                 'required' => false,
                 'stars' => 5,
             ])
-            ->add('image', FileType::class,[
+            ->add('images', FileType::class, [
+                'label' => $this->translator->trans('general.images'),
                 'multiple' => 'multiple',
                 'required' => false,
                 'mapped' => false,
@@ -48,11 +63,14 @@ class FeedbackWriteType extends AbstractType
                     ])),
                     new Count(null, null, 3)],
             ])
-            ->add('status', TextType::class,)
+            ->add('status', HiddenType::class, [
+                'required' => false
+            ])
             ->add('createAt', HiddenType::class, [
                 'required' => false
             ])
-            ->add('save', SubmitType::class);
+            ->add('save', SubmitType::class, [
+                'label' => $this->translator->trans('general.save')]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

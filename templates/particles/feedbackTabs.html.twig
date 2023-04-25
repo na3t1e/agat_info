@@ -39,7 +39,7 @@
                                 <span class="text-secondary">Оценка:</span> {{ new.rating|default("Не указана") }}
                             </li>
                             <li class="list-group-item">
-                                <span class="text-secondary">Время:</span> {{ new.createAt|date('H:i:s d.m.y') }}
+                                <span class="text-secondary">Дата:</span> {{ new.createAt|date('H:i:s d.m.y') }}
                             </li>
                             <li class="list-group-item">
                                 {% for i in new.images %}
@@ -92,7 +92,7 @@
                                 <span class="text-secondary">Оценка:</span> {{ active.rating|default("Не указана") }}
                             </li>
                             <li class="list-group-item">
-                                <span class="text-secondary">Время:</span> {{ active.createAt|date('H:i:s d.m.y') }}
+                                <span class="text-secondary">Дата:</span> {{ active.createAt|date('H:i:s d.m.y') }}
                             </li>
                             <li class="list-group-item">
                                 {% for i in active.images %}
@@ -145,7 +145,7 @@
                                 <span class="text-secondary">Оценка:</span> {{ archived.rating|default("Не указана") }}
                             </li>
                             <li class="list-group-item">
-                                <span class="text-secondary">Время:</span> {{ archived.createAt|date('H:i:s d.m.y') }}
+                                <span class="text-secondary">Дата:</span> {{ archived.createAt|date('H:i:s d.m.y') }}
                             </li>
                             <li class="list-group-item">
                                 {% for i in archived.images %}

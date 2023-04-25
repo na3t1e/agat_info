@@ -15,9 +15,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class FeedbackEditType extends AbstractType
 {
+    private TranslatorInterface $translator;
+
+    /**
+     * @param TranslatorInterface $translator
+     */
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -30,11 +40,14 @@ class FeedbackEditType extends AbstractType
                     'class' => 'd-none'
                 ]
             ])
-            ->add('name', TextType::class)
-            ->add('text', TextareaType::class)
+            ->add('name', TextType::class,[
+                'label' => $this->translator->trans('general.name')])
+            ->add('text', TextareaType::class,[
+                'label' => $this->translator->trans('general.text')])
             ->add('rating', StarRatingType::class, [
                 'required' => false,
                 'stars' => 5,
+                'label' => $this->translator->trans('general.rating')
             ])
             ->add('images', FileType::class, [
                 'multiple' => 'multiple',
@@ -45,12 +58,15 @@ class FeedbackEditType extends AbstractType
                         'maxSize' => "5M"
                     ])),
                     new Count(null, null, 3)],
-                'help' => 'Выбрано файлов: 0',])
+                'help' => 'Выбрано файлов: 0',
+                'label' => $this->translator->trans('general.images')])
             ->add('createAt', DateType::class, [
                 'required' => false,
                 'input' => 'datetime_immutable',
+                'label' => $this->translator->trans('general.createAt')
             ])
-            ->add('save', SubmitType::class);
+            ->add('save', SubmitType::class,[
+                'label' => $this->translator->trans('general.save')]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -5,3 +5,14 @@ general:
   advantage2: Плюс 2
   advantage3: Плюс 3
   save: Сохранить
+  number1: Номер 1
+  number2: Номер 2
+  tg: Telegram
+  wa: WhatsApp
+  workTime: Время работы
+  address: Адрес
+  area: Область предоставления услуг
+  name: ФИО
+  text: Текст
+  rating: Оценка
+  createAt: Дата создания
