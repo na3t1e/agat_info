@@ -33,7 +33,7 @@ class AdminMenuController extends AbstractController
         }
         $menu = $menuRepository->findAll();
         return $this->render('admin/menu.html.twig', [
-            'controller_name' => 'Каркасыч (Админ - Меню)',
+            'controller_name' => 'АГАТ (Админ - Меню)',
             'description' => 'Админка',
             'menuForm' => $menuForm->createView(),
             'menu' => $menu

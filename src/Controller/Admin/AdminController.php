@@ -12,7 +12,7 @@ class AdminController extends AbstractController
     public function main(): Response
     {
         return $this->render('admin/index.html.twig', [
-            'controller_name' => 'Каркасыч (Админ - главная)',
+            'controller_name' => 'АГАТ (Админ - главная)',
             'description' => 'Админка'
         ]);
     }

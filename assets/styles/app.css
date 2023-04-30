@@ -37,8 +37,8 @@ body {
 }
 
 .btn-light-blue {
-    color: white;
-    background-color: #529AC6;
+    color: white!important;
+    background-color: #529AC6!important;
 }
 
 .btn-dark-blue {
@@ -108,7 +108,7 @@ body {
     }
 }
 
-.container {
+.container-blue {
     background-color: #529AC6;
     padding: 0;
     padding-top: 50px;

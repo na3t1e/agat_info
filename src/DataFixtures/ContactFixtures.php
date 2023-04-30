@@ -18,7 +18,6 @@ class ContactFixtures extends Fixture
             ->setNumber1("8(999) 888-77-66")
             ->setNumber2('8(777) 654-32-45')
             ->setEmail("agat@yandex.ru")
-            ->setArea("г. Санкт-Петербург")
             ->setWorkTime("8:00-22:00")
             ->setAddress("Пушкинская улица, д.2")
         ;

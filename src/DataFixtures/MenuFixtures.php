@@ -19,7 +19,7 @@ class MenuFixtures extends Fixture
         $manager->persist($menu);
 
         $menu = new Menu();
-        $menu->setTitle("Отзывы")->setLink('/reviews')->setIsEnabled(true);
+        $menu->setTitle("Отзывы")->setLink('/feedbacks')->setIsEnabled(true);
         $manager->persist($menu);
 
         $menu = new Menu();

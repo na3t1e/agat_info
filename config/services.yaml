@@ -10,6 +10,9 @@ services:
     app.menuService:
         alias: App\Service\MenuService
         public: true
+    app.contactService:
+        alias: App\Service\ContactService
+        public: true
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

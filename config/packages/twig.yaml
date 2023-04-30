@@ -2,6 +2,7 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     globals:
         menuService: "@app.menuService"
+        contactService: "@app.contactService"
 
     paths:
         '%kernel.project_dir%/vendor/sbyaute/star-rating-bundle/Resources/views': SbyauteStarRatingBundle

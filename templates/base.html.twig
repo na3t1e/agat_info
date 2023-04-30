@@ -42,6 +42,8 @@
     <script>
         new WOW().init();
     </script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
 </head>
 <body>
 {% include 'particles/topNavBar.html.twig' %}
@@ -54,7 +56,7 @@
     {% endblock %}
 </div>
 
-<footer class="text-center text-lg-start bg-white text-muted" id="footer">
+<footer class="text-center text-lg-start text-muted" id="footer">
 
     <!-- Section: Links  -->
     <section class="bg-dark-blue text-white wow fadeInLeft">
@@ -91,26 +93,24 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="col-12 col-md-5 ms-lg-5 text-center text-lg-start mb-4">
+                <div class="col-12 col-md-4 ms-lg-5 text-center text-lg-start mb-4">
                     <div class="row text-center align-middle h-100 mt-md-5">
                         <h2 class="fs-1">г. Санкт-Петербург</h2>
                     </div>
                 </div>
-                <div class="col-12 col-md-2 col-lg-1 ms-lg-5 text-center text-lg-start mb-4">
+                <div class="col-12 col-md-2 col-lg-2 ms-lg-5 text-center text-lg-start mb-4">
                     <!-- Links -->
                     <div class=" text-md-end">
                     <h6 class="text-uppercase fw-bold mb-4 ">
                         Контакты
                     </h6>
                     <div class="row">
-                        {% for menu in menuService.getMenu %}
-                            {% if menu.isEnabled %}
-                                <div class="col-sm-12 ">
-                                    <a class="text-reset text-decoration-none {% if app.request.pathinfo == menu.link %}active{% endif %}"
-                                       aria-current="page" href="{{ menu.link }}">{{ menu.title }}</a>
+
+                                <div class="col-sm-12 text-reset">
+                                    {{  contactService.getContacts.email }}<br>
+                                    {{ contactService.getContacts.number1 }}<br>
+                                    {{ contactService.getContacts.number2 }}
                                 </div>
-                            {% endif %}
-                        {% endfor %}
                     </div>
                     </div>
                 </div>
