@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'app_contact')]
+    #[Route('/contacts', name: 'app_contact')]
     public function index(ContactRepository $contactRepository): Response
     {
         $contacts = $contactRepository->findAll()[0];
@@ -20,4 +20,6 @@ class ContactController extends AbstractController
             'controller_name' => 'ContactController',
         ]);
     }
+
+
 }

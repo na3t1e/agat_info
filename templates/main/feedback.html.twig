@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Контакты{% endblock %}
+
+{% block noncontainer %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <button
+                        class="btn bg-dark-green bg-gradient col-5 fs-4 text-black fw-bold justify-content-center"
+                        onclick="launchModal('Первый')">
+                    Оставьте свой отзыв!
+                </button>
+            </div>
+        </div>
+    </div>
+    {% include './particles/modal.html.twig' %}
+{% endblock %}

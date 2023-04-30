@@ -1,0 +1,46 @@
+{% extends 'baseAdmin.html.twig' %}
+{% form_theme feedbackEditForm 'bootstrap_5_layout.html.twig' %}
+{% block title %}Администратор - отзывы{% endblock %}
+
+{% block body %}
+    <div class="offcanvas offcanvas-bottom " tabindex="-1" id="offcanvasBottom" data-bs-backdrop="true"
+         aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Изменить запись</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            {{ form(feedbackEditForm) }}
+        </div>
+    </div>
+    {% include './particles/feedbackTabs.html.twig' %}
+    <script>
+        function openEditForm(id, name, text ,rating, day, month, year) {
+            event.stopPropagation()
+            var myOffcanvas = document.getElementById('offcanvasBottom')
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+            bsOffcanvas.show()
+            document.getElementById('feedback_edit_id').value = id;
+            document.getElementById('feedback_edit_name').value = name;
+            document.getElementById('feedback_edit_text').value = text;
+            document.getElementById('feedback_edit_rating').value = rating;
+            document.getElementById('feedback_edit_createAt_day').value = day;
+            document.getElementById('feedback_edit_createAt_month').value = month;
+            document.getElementById('feedback_edit_createAt_year').value = year;
+        }
+
+        var numEditFiles = 0;
+        function addEditInput() {
+            $('input[name="review_edit[images][]"]').last().change(function() {
+                $(this).after('<input type="file" id="feedback_edit_images" name="feedback_edit[images][]" multiple="multiple" class="form-control">');
+                $(this).off('change');
+                numEditFiles += $(this).get(0).files.length;
+                document.getElementById('feedback_edit_images_help').innerText = "Файлов выбрано: " + numEditFiles;
+                $(this).hide();
+                addEditInput();
+            });
+        }
+        addEditInput();
+    </script>
+    {% include('./particles/modal_show_image.html.twig') %}
+{% endblock %}

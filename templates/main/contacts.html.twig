@@ -1,107 +1,52 @@
+{% extends 'base.html.twig' %}
 {% block title %}Контакты{% endblock %}
 
-{% block body %}
-     <div class="container">
-        <div class="row mb-3">
-            <div class="col-lg-2"></div>
-            <div class="col-sm-12 col-lg-9">
-                <div class="row">
-                    <div class="col-6 fs-4"><i class="bi bi-telephone-fill text-success"></i> Номер телефона:
-                    </div>
-                    <div class="col-6 fs-4">
-                        {% if contacts.number1 %}
-                            <a class="text-success" href="tel:{{ contacts.number1 }}">{{ contacts.number1 }}</a>
-                        {% endif %}
-                        {% if contacts.number2 %}
-                            <a class="text-success" href="tel:{{ contacts.number2 }}">{{ contacts.number2 }}</a>
-                        {% endif %}
-                    </div>
-                </div>
+{% block noncontainer %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-4 text-center">
+                <div><img class="img-contacts" src="svg/Group 2.svg"></div>
+                <a class="text-contacts" href="tel:{{ contacts.number1 }}">{{ contacts.number1 }}</a>
+                {% if contacts.number2 %}
+                    <br>
+                    <a class="text-contacts" href="tel:{{ contacts.number2 }}">{{ contacts.number2 }}</a>
+                {% endif %}
             </div>
+            {% if contacts.email %}
+                <div class="col-sm-12 col-lg-4  text-center">
+                    <div><img class="img-contacts" src="svg/Group 3.svg"></div>
+                    <a class="text-contacts" href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+                </div>
+            {% endif %}
+            {% if contacts.workTime %}
+                <div class="col-sm-12 col-lg-4  text-center">
+                    <div><img class="img-contacts" src="svg/Clip path group.svg"></div>
+                    <p class="text-contacts">{{ contacts.workTime }}</p>
+                </div>
+            {% endif %}
         </div>
-        {% if contacts.tg %}
-            <div class="row mb-2">
-                <div class="col-lg-2"></div>
-                <div class="col-sm-12 col-lg-9">
-                    <div class="row">
-                        <div class="col-6 fs-4">
-                        </div>
-                        <div class="col-6 fs-4"><a class="text-success text-decoration-none"
-                                                   href="{{ contacts.tg }}"><i class="bi bi-telegram"></i> Напишите нам
-                                в <b>Telegram</b></a>
-                        </div>
-                    </div>
+        <div class="row">
+            {% if contacts.wa %}
+                <div class="col-sm-12 col-lg-4  text-center">
+                    <div><img class="img-contacts" src="svg/Group.svg"></div>
+                    <a class="text-contacts" href="{{ contacts.wa }}">Написать в WhatsApp</a>
                 </div>
-            </div>
-        {% endif %}
-        {% if contacts.wa %}
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-sm-12 col-lg-9">
-                    <div class="row">
-                        <div class="col-6 fs-4">
-                        </div>
-                        <div class="col-6 fs-4">
-                            <a class="text-success text-decoration-none"
-                               href="{{ contacts.wa }}"><i class="bi bi-whatsapp"></i> Напишите нам в
-                                <b>WhatsApp</b></a>
-                        </div>
-                    </div>
+            {% endif %}
+            {% if contacts.tg %}
+                <div class="col-sm-12 col-lg-4  text-center">
+                    <div><img class="img-contacts" src="svg/Layer_1.svg"></div>
+                    <a class="text-contacts" href="{{ contacts.tg }}">Написать в Telegram</a>
                 </div>
-            </div>
-        {% endif %}
-        {% if contacts.email %}
-            <div class="row mb-5 mt-5">
-                <div class="col-lg-2"></div>
-                <div class="col-sm-12 col-lg-9">
-                    <div class="row">
-                        <div class="col-6 fs-4"><i class="bi bi-envelope-fill text-success"></i> Электронная почта:
-                        </div>
-                        <div class="col-6 fs-4"><a class="text-success"
-                                                   href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
-                        </div>
-                    </div>
+            {% endif %}
+            {% if contacts.address %}
+                <div class="col-sm-12 col-lg-4  text-center">
+                    <div><img class="img-contacts" src="svg/Group 4.svg"></div>
+                    <p class="text-contacts">{{ contacts.address }}</p>
                 </div>
-            </div>
-        {% endif %}
-        {% if contacts.workTime %}
-            <div class="row mb-5">
-                <div class="col-lg-2"></div>
-                <div class="col-sm-12 col-lg-9">
-                    <div class="row">
-                        <div class="col-6 fs-4"><i class="bi bi-clock-fill text-success"></i> Часы работы:
-                        </div>
-                        <div class="col-6 fs-4"> {{ contacts.workTime }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-        {% if contacts.area %}
-            <div class="row mb-5">
-                <div class="col-lg-2"></div>
-                <div class="col-sm-12 col-lg-9">
-                    <div class="row">
-                        <div class="col-6 fs-4"><i class="bi bi-geo-alt-fill text-success"></i> Местоположение:
-                        </div>
-                        <div class="col-6 fs-4"> {{ contacts.area }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-        {% if contacts.address %}
-            <div class="row mb-5">
-                <div class="col-lg-2"></div>
-                <div class="col-sm-12 col-lg-9">
-                    <div class="row">
-                        <div class="col-6 fs-4"><i class="bi bi-geo-alt-fill text-success"></i>Адрес:
-                        </div>
-                        <div class="col-6 fs-4"> {{ contacts.address }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.0747698091013!2d30.355513777109042!3d59.93090147491122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469631a4dcb7823b%3A0x4326bbe83981245b!2z0J_Rg9GI0LrQuNC90YHQutCw0Y8g0YPQuy4sIDIsINCh0LDQvdC60YIt0J_QtdGC0LXRgNCx0YPRgNCzLCAxOTEwMjU!5e0!3m2!1sru!2sru!4v1681992916110!5m2!1sru!2sru"
+                width="100%" height="370" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 {% endblock %}

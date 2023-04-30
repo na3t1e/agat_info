@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminContactController extends AbstractController
 {
-    #[Route('/admin/contact', name: 'app_admin_contact')]
+    #[Route('/admin/contacts', name: 'app_admin_contacts')]
     public function index(ContactRepository $contactRepository,
                           Request           $request,
                           EntityManagerInterface $entityManager): Response
@@ -29,8 +29,11 @@ class AdminContactController extends AbstractController
             }
         }
         return $this->render('admin/contact.html.twig', [
+            'contactEditForm'=>$contactEditForm,
             'controller_name' => 'AdminContactController',
             'contacts' => $contacts
         ]);
     }
+
+
 }

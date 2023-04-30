@@ -1,0 +1,182 @@
+<script>
+    $(document).ready(function () {
+        $("#myTab a").click(function (e) {
+            e.preventDefault();
+            $(this).tab("show");
+        });
+    });
+</script>
+<div class="m-4">
+    <ul class="nav nav-pills" id="myTab">
+        <li class="nav-item">
+            <a href="#new" class="nav-link active">Новые</a>
+        </li>
+        <li class="nav-item">
+            <a href="#active" class="nav-link">Активные</a>
+        </li>
+        <li class="nav-item">
+            <a href="#archived" class="nav-link ">Архивированные</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="new">
+            <h4 class="mt-2">Новые отзывы</h4>
+            <div class="row">
+                {% for new in newFeedbacks|reverse %}
+                    <div class="col-auto mb-4">
+                        <ul class="list-group">
+                            <a class="col-auto btn btn-outline-primary rounded-bottom-0"
+                               onclick="openEditForm({{ new.id }},'{{ new.name }}',`{{ new.text }}`,'{{ new.rating }}',{{ new.createAt|date('d') }}, {{ new.createAt|date('m') }}, {{ new.createAt|date('Y') }})">
+                                Редактировать
+                            </a>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Имя:</span> {{ new.name }}
+                            </li>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Текст:</span> {{ new.text }}
+                            </li>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Оценка:</span> {{ new.rating|default("Не указана") }}
+                            </li>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Дата:</span> {{ new.createAt|date('H:i:s d.m.y') }}
+                            </li>
+                            <li class="list-group-item">
+                                {% for i in new.images %}
+                                    <div class="col-4 ms-3 p-0"
+                                         style="height: 220px; background: url({{ asset('uploads/'~i|url_encode) }}) no-repeat; background-size: contain;">
+                                        <div onclick="window.location = '{{ path('app_admin_pages_feedback_delete_image', {id: new.id, name: i }) }}'"
+                                             class="btn btn-danger p-1 rounded-0 float-end fs-6" style="line-height: 9px">x
+                                        </div>
+                                        <div onclick="launchModalPhoto('{{ i }}','')"
+                                             class="btn btn-success p-1 rounded-0 float-start fs-7" style="line-height: 9px">
+                                            <i class="bi bi-arrows-fullscreen fs-7"></i>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </li>
+                            <li class="list-group-item text-center">
+                                <div class="row gap-4">
+                                    <a class="col-auto  btn btn-danger"
+                                       href="{{ path('app_admin_feedback_delete', { id: new.id }) }}">
+                                        Удалить
+                                    </a>
+                                    <a class="col-auto btn btn-success"
+                                       href="{{ path('app_admin_feedback_activate', { id: new.id }) }}">
+                                        Опубликовать
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="tab-pane fade" id="active">
+            <h4 class="mt-2">Активные отзывы</h4>
+            <div class="row">
+                {% for active in activeFeedbacks|reverse %}
+                    <div class="col-auto mb-4">
+                        <ul class="list-group">
+                            <a class="col-auto btn btn-outline-primary rounded-bottom-0"
+                               onclick="openEditForm({{ active.id }},'{{ active.name }}',`{{ active.text }}`,'{{ active.rating }}',{{ active.createAt|date('d') }}, {{ active.createAt|date('m') }}, {{ active.createAt|date('Y') }})">
+                                Редактировать
+                            </a>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Имя:</span> {{ active.name }}
+                            </li>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Текст:</span> {{ active.text }}
+                            </li>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Оценка:</span> {{ active.rating|default("Не указана") }}
+                            </li>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Дата:</span> {{ active.createAt|date('H:i:s d.m.y') }}
+                            </li>
+                            <li class="list-group-item">
+                                {% for i in active.images %}
+                                    <div class="col-4  ms-3 p-0"
+                                         style="height: 220px; background: url({{ asset('uploads/'~i|url_encode) }}) no-repeat; background-size: contain;">
+                                        <div onclick="window.location = '{{ path('app_admin_pages_feedback_delete_image', {id: active.id, name: i }) }}'"
+                                             class="btn btn-danger p-1 rounded-0 float-end fs-6" style="line-height: 9px">x
+                                        </div>
+                                        <div onclick="launchModalPhoto('{{ i }}','')"
+                                             class="btn btn-success p-1 rounded-0 float-start fs-7" style="line-height: 9px">
+                                            <i class="bi bi-arrows-fullscreen fs-7"></i>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </li>
+                            <li class="list-group-item text-center">
+                                <div class="row gap-4">
+                                    <a class="col-auto  btn btn-danger"
+                                       href="{{ path('app_admin_feedback_delete', { id: active.id }) }}">
+                                        Удалить
+                                    </a>
+                                    <a class="col-auto btn btn-success"
+                                       href="{{ path('app_admin_feedback_archive', { id: active.id }) }}">
+                                        Архивировать
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="tab-pane fade" id="archived">
+            <h4 class="mt-2">Архивированные отзывы</h4>
+            <div class="row">
+                {% for archived in archivedFeedbacks|reverse %}
+                    <div class="col-auto mb-4">
+                        <ul class="list-group">
+                            <a class="col-auto btn btn-outline-primary rounded-bottom-0"
+                               onclick="openEditForm({{ archived.id }},'{{ archived.name }}',`{{ archived.text }}`,'{{ archived.rating }}',{{ archived.createAt|date('d') }}, {{ archived.createAt|date('m') }}, {{ archived.createAt|date('Y') }})">
+                                Редактировать
+                            </a>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Имя:</span> {{ archived.name }}
+                            </li>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Текст:</span> {{ archived.text }}
+                            </li>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Оценка:</span> {{ archived.rating|default("Не указана") }}
+                            </li>
+                            <li class="list-group-item">
+                                <span class="text-secondary">Дата:</span> {{ archived.createAt|date('H:i:s d.m.y') }}
+                            </li>
+                            <li class="list-group-item">
+                                {% for i in archived.images %}
+                                    <div class="col-4 ms-3 p-0"
+                                         style="height: 220px; background: url({{ asset('uploads/'~i|url_encode) }}) no-repeat; background-size: contain;">
+                                        <div onclick="window.location = '{{ path('app_admin_pages_feedback_delete_image', {id: archived.id, name: i }) }}'"
+                                             class="btn btn-danger p-1 rounded-0 float-end fs-6" style="line-height: 9px">x
+                                        </div>
+                                        <div onclick="launchModalPhoto('{{ i }}','')"
+                                             class="btn btn-success p-1 rounded-0 float-start fs-7" style="line-height: 9px">
+                                            <i class="bi bi-arrows-fullscreen fs-7"></i>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </li>
+                            <li class="list-group-item text-center">
+                                <div class="row gap-4">
+                                    <a class="col-auto  btn btn-danger"
+                                       href="{{ path('app_admin_feedback_delete', { id: archived.id }) }}">
+                                        Удалить
+                                    </a>
+                                    <a class="col-auto btn btn-success"
+                                       href="{{ path('app_admin_feedback_activate', { id: archived.id }) }}">
+                                        Опубликовать
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

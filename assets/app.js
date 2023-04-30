@@ -6,17 +6,12 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-
-
 const $ = require('jquery'); global.$ = global.jQuery = $;
 global.bootstrap = require('./js/bootstrap.bundle.min.js')
+import './styles/app.css';
 import './css/bootstrap.min.css';
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
-import './styles/app.css';
 import './js/bootstrap.bundle.min.js';
 // start the Stimulus application
 import './bootstrap';
-
-
-
-
+// import 'controllers/jquery';
