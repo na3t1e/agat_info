@@ -15,7 +15,7 @@ class MenuFixtures extends Fixture
         $manager->persist($menu);
 
         $menu = new Menu();
-        $menu->setTitle("Услуги")->setLink('/services')->setIsEnabled(true);
+        $menu->setTitle("Услуги")->setLink('/service/flight')->setIsEnabled(true);
         $manager->persist($menu);
 
         $menu = new Menu();

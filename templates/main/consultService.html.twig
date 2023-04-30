@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-sm">
+        <div class="row mb-5">
+            <a href="{{ path('app_flight_service') }}" class="col-12 col-lg-4 text-decoration-none text-black mb-3">
+                <div class=" border border-1 shadow-blue-outer text-center ">
+                    Услуги по выполнению <br>
+                    авиационных работ
+                </div>
+            </a>
+            <a href="{{ path('app_maintenance_service') }}" class="col-12 col-lg-4 text-decoration-none text-black mb-3">
+                <div class="border border-1 shadow-blue-outer text-center ">
+                    Услуги технического<br> обслуживания
+                    судов
+                </div>
+            </a>
+            <a href="{{ path('app_consult_service') }}" class="col-12 col-lg-4 text-decoration-none text-black mb-3">
+                <div class="border border-1 shadow-dark-blue-inner text-center bg-light-blue text-white">
+                    Услуги оценки соответствия <br>
+                    воздушных судов, консультации
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="container-sm">
+        {% set i = 1 %}
+        {% for s in services %}
+            <div class="row shadow-blue-outer mb-5 {% if i % 2 == 0 %}wow fadeInRightBig{% else %}wow fadeInLeftBig{% endif %}">
+                <div class="col-12 col-lg-5 ps-0 pe-0">
+                    <img src="{{ asset('uploads/' ~ s.image) }}" class="img-fluid" style="height: 100%; object-fit: cover">
+                </div>
+                <div class="col-12 col-lg-7 py-5">
+                    <h2 class="text-light-blue text-center mb-4">{{ s.title }}</h2>
+                    <p class="">
+                        {{ s.description|raw }}
+                    </p>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <a class="btn btn-dark-blue rounded-0 fs-5">Отправить заявку</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% set i = i + 1 %}
+        {% endfor %}
+    </div>
+{% endblock %}

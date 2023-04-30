@@ -1,0 +1,121 @@
+{% extends 'baseAdmin.html.twig' %}
+{% form_theme serviceCreateForm 'bootstrap_5_layout.html.twig' %}
+{% form_theme serviceEditForm 'bootstrap_5_layout.html.twig' %}
+{% block title %}АК АГАТ | Администратор - Услуги{% endblock %}
+
+{% block body %}
+
+    <div class="row d-block d-lg-none">
+        <button class="btn btn-success mb-5 fs-2" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Создать
+        </button>
+    </div>
+    <button class="d-none d-lg-flex btn btn-success float-end mb-5" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Создать
+    </button>
+    <div class="row">
+        <h1 class="text-center">Услуги по выполнению
+            авиационных работ</h1>
+    </div>
+    <div class="offcanvas offcanvas-top " tabindex="-1" id="offcanvasTop" data-bs-backdrop="true"
+         aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasTopLabel">Создать запись</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            {{ form(serviceCreateForm) }}
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-bottom " tabindex="-1" id="offcanvasBottom" data-bs-backdrop="true"
+         aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Изменить запись</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            {{ form(serviceEditForm) }}
+            <button class="btn btn-danger" onclick="deleteProduct(document.getElementById('aircraft_flight_service_edit_id').value)">
+                Удалить запись
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for s in services %}
+            <div class="col-auto mb-3">
+                <ul class="list-group">
+                    <a class="col-auto btn btn-outline-primary rounded-bottom-0"
+                       onclick='openEditForm(
+                               "{{ s.id }}",
+                               "{{ s.title }}",
+                               "{{ s.description | raw | escape('js') }}",
+                               "{{ s.image }}",
+                               )'
+                    >Редактировать</a>
+                    <li class="list-group-item">
+                        <span class="text-secondary">Название: </span>{{ s.title }}
+                    </li>
+                    <li class="list-group-item">
+                        <span class="text-secondary">Описание: </span>{{ s.description|raw }}
+                    </li>
+                    <li class="list-group-item">
+                        {% if s.image is not null and s.image is not empty %}
+                        <div class="col-4 ms-3 p-0"
+                             style="height: 200px; background: url({{ asset('uploads/'~s.image) }}) no-repeat; background-size: contain;">
+                            <div onclick="window.location = '{{ path('app_aircraft_flight_service_delete_image', {id: s.id, name: s.image }) }}'"
+                                 class="btn btn-danger p-1 rounded-0 float-end fs-6" style="line-height: 9px">x
+                            </div>
+                            <div onclick="launchModalPhoto('{{ s.image }}','')"
+                                 class="btn btn-success p-1 rounded-0 float-start fs-7"
+                                 style="line-height: 9px">
+                                <i class="bi bi-arrows-fullscreen fs-7"></i>
+                            </div>
+                        </div>
+                            {% endif %}
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        function openCreateFormError() {
+            var myOffcanvas = document.getElementById('offcanvasTop')
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+            bsOffcanvas.show()
+        }
+
+        function openEditFormError() {
+            var myOffcanvas = document.getElementById('offcanvasBottom')
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+            bsOffcanvas.show()
+        }
+
+        function openEditForm(id, name, description) {
+            event.stopPropagation()
+            var myOffcanvas = document.getElementById('offcanvasBottom')
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+            bsOffcanvas.show()
+            document.getElementById('aircraft_flight_service_edit_id').value = id;
+            document.getElementById('aircraft_flight_service_edit_title').value = name;
+            for (var instanceName in CKEDITOR.instances) {
+                console.log(CKEDITOR.instances[instanceName]);
+            }
+            CKEDITOR.instances.aircraft_flight_service_edit_description.setData(description)
+        }
+
+        function deleteProduct(id) {
+            window.location = '/admin/aircraft_flight_service/delete/' + id;
+        }
+    </script>
+
+    {% if createError == 1 %}
+        <script>openCreateFormError()</script>
+    {% endif %}
+    {% if editError == 1 %}
+        <script>openEditFormError()</script>
+    {% endif %}
+    {% include('./particles/modal_show_image.html.twig') %}
+{% endblock %}

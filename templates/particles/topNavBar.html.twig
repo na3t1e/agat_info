@@ -54,7 +54,15 @@
                         {% for menu in menuService.getMenu %}
                             {% if menu.isEnabled %}
                                 <li class="nav-item">
-                                    <a class="nav-link mx-2 {% if app.request.pathinfo == menu.link %}active{% endif %}"
+                                    <a class="nav-link mx-2
+
+                                {%
+                                        if app.request.pathinfo == menu.link or
+                                        (type is defined and
+                                        (type == 'service' and (app.request.pathinfo == '/service/flight' or app.request.pathinfo == '/service/maintenance' or app.request.pathinfo == '/service/consult')))
+                                %}
+                                active
+                                {% endif %}"
                                        aria-current="page" href="{{ menu.link }}">{{ menu.title }}</a>
                                 </li>
                             {% endif %}
@@ -69,7 +77,7 @@
                     +79216423639
                     </span>
                     <div class="col-auto align-self-center mt-2">
-                        <div class="btn btn-light-blue rounded-0"
+                        <div class="btn btn-light-blue rounded-3    "
                              onclick="window.location='{{ path('app_admin_main') }}'">
                             Вход для<br> сотрудников
                         </div>
@@ -90,7 +98,7 @@
                     </span>
                 </div>
                 <div class="col-auto align-self-center">
-                    <div class="btn btn-light-blue rounded-0" onclick="window.location='{{ path('app_admin_main') }}'">
+                    <div class="btn btn-light-blue rounded-3" onclick="window.location='{{ path('app_admin_main') }}'">
                         Вход для<br> сотрудников
                     </div>
                 </div>
