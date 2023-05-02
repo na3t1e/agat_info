@@ -18,7 +18,7 @@ class AdminFeedbackController extends AbstractController
                                 EntityManagerInterface $entityManager): Response
     {
         $newFeedbacks = $feedbackRepository->findBy([
-            "status" => "notChecked"
+            "status" => "new"
         ]);
         $activeFeedbacks = $feedbackRepository->findBy([
             "status" => "active"

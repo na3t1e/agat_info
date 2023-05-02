@@ -47,7 +47,7 @@ class FeedbackController extends AbstractController
                     );
                     $feedback->addImage($newFilename);
                 }
-                $feedback->setStatus('notChecked');
+                $feedback->setStatus('new');
                 $feedback->setCreateAt(new \DateTimeImmutable('now', new \DateTimeZone('Europe/Moscow')));
                 $entityManager->persist($feedback);
                 $entityManager->flush();
@@ -57,7 +57,7 @@ class FeedbackController extends AbstractController
         return $this->render('main/feedback.html.twig',
             [
                 'controller_name' => 'FeedbackController',
-                'feedbacks' => $feedbackRepository->findBy(['status' => 'published']),
+                'feedbacks' => $feedbackRepository->findBy(['status' => 'active']),
                 'feedbackForm' => $feedbackForm->createView(),
                 'feedbackCreateForm' => $feedbackCreateForm->createView(),
             ]);

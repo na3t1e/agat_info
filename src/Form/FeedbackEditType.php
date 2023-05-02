@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Validator\Constraint;
 
 class FeedbackEditType extends AbstractType
 {
@@ -47,7 +48,7 @@ class FeedbackEditType extends AbstractType
             ->add('rating', StarRatingType::class, [
                 'required' => false,
                 'stars' => 5,
-                'label' => $this->translator->trans('general.rating')
+                'label' => $this->translator->trans('general.rating'),
             ])
             ->add('images', FileType::class, [
                 'multiple' => 'multiple',
