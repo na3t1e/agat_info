@@ -12,7 +12,9 @@ general:
   workTime: Время работы
   address: Адрес
   area: Область предоставления услуг
-  name: ФИО
+  fio: ФИО
+  name: Заголовок
+  description: Описание
   text: Текст
   rating: Оценка
   createAt: Дата создания

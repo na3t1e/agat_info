@@ -34,12 +34,18 @@ class FeedbackWriteType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => $this->translator->trans('general.name')])
+                'label' => $this->translator->trans('general.fio'),
+                'attr' => [
+                    'class' => 'border-blue'
+                ],
+            ])
+
             ->add('text', TextareaType::class, [
                 'label' => $this->translator->trans('general.text'),
                 'help' => 'Осталось символов: 1000',
                 'attr' => [
                     'rows' => 7,
+                    'class' => 'border-blue'
                 ],
                 'constraints' => [
                     new Length([
@@ -48,7 +54,7 @@ class FeedbackWriteType extends AbstractType
                 ]])
             ->add('rating', StarRatingType::class, [
                 'label' => $this->translator->trans('general.rating'),
-                'required' => false,
+                'required' => true,
                 'stars' => 5,
             ])
             ->add('images', FileType::class, [
@@ -56,6 +62,9 @@ class FeedbackWriteType extends AbstractType
                 'multiple' => 'multiple',
                 'required' => false,
                 'mapped' => false,
+                'attr' => [
+                    'class' => 'border-blue'
+                ],
                 'help' => 'Максимальное количество фотографий: 3 (выбрано: 0)',
                 'constraints' => [
                     new All(new Image([
@@ -70,7 +79,11 @@ class FeedbackWriteType extends AbstractType
                 'required' => false
             ])
             ->add('save', SubmitType::class, [
-                'label' => $this->translator->trans('general.save')]);
+                'label' => $this->translator->trans('general.save'),
+                'attr' => [
+                    'class' => 'btn-dark-blue'
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

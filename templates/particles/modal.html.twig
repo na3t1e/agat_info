@@ -1,7 +1,7 @@
 {% form_theme feedbackCreateForm 'bootstrap_5_layout.html.twig' %}
 <div class="modal fade" tabindex="-1" id="exampleModal">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content border-blue-bold">
             {{ form_start(feedbackCreateForm) }}
             <div class="modal-body">
                 {{ form_label(feedbackCreateForm.name) }}<span class="text-danger">*</span>
@@ -14,12 +14,19 @@
                 {{ form_widget(feedbackCreateForm.text) }}
                 {{ form_help(feedbackCreateForm.text) }}
 
-                <div class="mt-2">{{ form_row(feedbackCreateForm.rating) }} <span class="text-danger">*</span></div>
+                <div class="mt-2">
+                    {{ form_label(feedbackCreateForm.rating) }}<span class="text-danger">*</span>
+                    {{ form_errors(feedbackCreateForm.rating) }}
+                    {{ form_widget(feedbackCreateForm.rating) }}
+                    {{ form_help(feedbackCreateForm.rating) }}
+                </div>
 
                 {{ form_row(feedbackCreateForm.images) }}
                 {{ form_errors(feedbackCreateForm.images) }}
+                <div class="row text-center">
+                    {{ form_row(feedbackCreateForm.save) }}
+                </div>
 
-                {{ form_row(feedbackCreateForm.save) }}
             </div>
             {{ form_end(feedbackCreateForm) }}
         </div>
@@ -31,4 +38,37 @@
         let orderModal = new bootstrap.Modal(document.getElementById('exampleModal'), {})
         orderModal.toggle();
     }
+
+    var numCreateFiles = 0;
+    function addCreateInput() {
+        $('input[name="feedback_write[images][]"]').last().change(function() {
+            $(this).after('<input type="file" id="feedback_write_images" name="feedback_write[images][]" multiple="multiple" class="form-control">');
+            $(this).off('change');
+            numCreateFiles += $(this).get(0).files.length;
+            document.getElementById('feedback_write_images_help').innerText = 'Максимальное количество фотографий: 3 (выбрано: ' + numCreateFiles + ')';
+            $(this).hide();
+            addCreateInput();
+        });
+    }
+    addCreateInput();
+
+    $(document).ready(function () {
+        $('#feedback_write_text_help').html('Осталось символов: <span id="text-count" class="text-dark-blue">1000</span>');
+        var max_length = 1000;
+        $('#feedback_write_text').keyup(function () {
+            var len = max_length - $(this).val().length;
+            $('#text-count').text(len);
+            if (len < 0) {
+                $('#feedback_write_save').addClass('disabled')
+                $('#text-count').removeClass('text-info')
+                $('#text-count').addClass('text-danger')
+            } else {
+                $('#feedback_write_save').removeClass('disabled')
+                $('#text-count').removeClass('text-danger')
+                $('#text-count').addClass('text-info')
+            }
+        });
+
+    });
+
 </script>

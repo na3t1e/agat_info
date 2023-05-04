@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Contact;
+
+use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,7 +32,7 @@ class ContactType extends AbstractType
                 'label' => $this->translator->trans('general.number1')])
             ->add('number2', TextType::class, ['required' => false,
                 'label' => $this->translator->trans('general.number2')])
-            ->add('email', TextType::class, ['required' => false])
+            ->add('email', EmailType::class, ['required' => false])
             ->add('tg', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.tg')])
             ->add('wa', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.wa')])
             ->add('workTime', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.workTime')])

@@ -7,6 +7,7 @@ use Sbyaute\StarRatingBundle\Form\StarRatingType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -44,9 +45,8 @@ class FeedbackEditType extends AbstractType
                 'label' => $this->translator->trans('general.name')])
             ->add('text', TextareaType::class,[
                 'label' => $this->translator->trans('general.text')])
-            ->add('rating', StarRatingType::class, [
+            ->add('rating', NumberType::class, [
                 'required' => false,
-                'stars' => 5,
                 'label' => $this->translator->trans('general.rating')
             ])
             ->add('images', FileType::class, [

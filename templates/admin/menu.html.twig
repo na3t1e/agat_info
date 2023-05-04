@@ -26,7 +26,7 @@
                             "{{ m.id }}",
                             "{{ m.title }}",
                             "{{ m.link }}",
-                    {{ m.isEnabled|default(0) }}
+                    {{ m.isEnabled|default(0) }},
                             )'>
                         <li class="list-group-item">
                             <span class="text-secondary">Наименование: </span>{{ m.title }}
@@ -61,6 +61,7 @@
             if (isEnabled === 1) {
                 document.getElementById('menu_isEnabled').checked = true;
             }
+
 
 
         }

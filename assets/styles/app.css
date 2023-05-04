@@ -21,11 +21,11 @@ body {
 }
 
 .bg-light-blue {
-    background-color: #529AC6;
+    background-color: #529AC6!important;
 }
 
 .bg-dark-blue {
-    background-color: #045F86;
+    background-color: #045F86!important;
 }
 
 .text-light-blue {
@@ -42,18 +42,18 @@ body {
 }
 
 .btn-dark-blue {
-    color: white;
-    background-color: #045F86;
+    color: white!important;
+    background-color: #045F86!important;
 }
 
 .btn-light-blue:hover {
-    color: white;
-    background-color: #045F86;
+    color: white!important;
+    background-color: #045F86!important;
 }
 
 .btn-dark-blue:hover {
-    color: white;
-    background-color: #529AC6;
+    color: white!important;
+    background-color: #529AC6!important;
 }
 
 .shadow-white {
@@ -119,10 +119,37 @@ body {
     text-align: center;
     font-family: Segoe UI;
     font-weight: lighter;
-    padding-bottom: 30px;
 }
 .img-contacts {
     padding-bottom: 10px;
+}
+
+.rating div.star-full:before, .rating span.star-full:before  {
+    content:url("/public/svg/aircraft_fill.svg")!important;
+    height: 16px!important;
+    padding-right:5px;
+    color: rgb(55, 100, 10)!important;
+}
+
+.rating div.star:hover:before,.rating div.star:hover~div.star:before, .rating span.star:hover:before,.rating span.star:hover~span.star:before {
+    content:url("/public/svg/aircraft_fill.svg")!important;
+    height: 16px!important;
+    color: rgb(55, 100, 10)!important;
+}
+
+.rating div.star:before, .rating span.star:before {
+    content:url("/public/svg/aircraft_empty.svg")!important;
+    height: 16px!important;
+    padding-right: 5px;
+    color: rgb(55, 100, 10)!important;
+}
+
+.border-blue {
+    border-color: #045F86!important;
+}
+
+.border-blue-bold {
+    border: 0.2rem solid #045F86 !important;
 }
 
 

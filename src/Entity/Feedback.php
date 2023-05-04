@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\FeedbackRepository;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FeedbackRepository::class)]
@@ -21,6 +22,8 @@ class Feedback
     private ?string $text = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\LessThanOrEqual(value: 5, message: 'Рейтинг должен быть меньше или равен 5')]
+    #[Assert\GreaterThanOrEqual(value: 1, message: 'Рейтинг должен быть больше или равно 1')]
     private ?int $rating = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]

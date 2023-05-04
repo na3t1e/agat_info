@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
@@ -14,9 +15,11 @@ class Contact
     private ?int $id = null;
 
     #[ORM\Column(length: 17, nullable: true)]
+    #[Assert\Regex(pattern: "^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$^", message: "Введите номер телефона правильно!")]
     private ?string $number1 = null;
 
     #[ORM\Column(length: 17, nullable: true)]
+    #[Assert\Regex(pattern: "^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$^", message: "Введите номер телефона правильно!")]
     private ?string $number2 = null;
 
     #[ORM\Column(length: 180, nullable: true)]

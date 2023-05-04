@@ -26,7 +26,8 @@ class AdminMenuController extends AbstractController
                 $menu = $menuRepository->find($menuForm->get('id')->getData());
                 $menu->setTitle($menuForm->get('title')->getData())
                     ->setLink($menuForm->get('link')->getData())
-                    ->setIsEnabled($menuForm->get('isEnabled')->getData());
+                    ->setIsEnabled($menuForm->get('isEnabled')->getData())
+                    ;
                 $entityManager->persist($menu);
                 $entityManager->flush();
             }

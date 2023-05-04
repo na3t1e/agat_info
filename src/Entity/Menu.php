@@ -22,6 +22,7 @@ class Menu
     #[ORM\Column]
     private ?bool $isEnabled = null;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -62,4 +63,5 @@ class Menu
 
         return $this;
     }
+
 }
