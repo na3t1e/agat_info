@@ -1,17 +1,76 @@
 {% extends 'base.html.twig' %}
-{% block title %}Контакты{% endblock %}
+{% block title %}Отзывы{% endblock %}
 
 {% block noncontainer %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <button
-                        class="btn bg-dark-green bg-gradient col-5 fs-4 text-black fw-bold justify-content-center"
-                        onclick="launchModal('Первый')">
-                    Оставьте свой отзыв!
-                </button>
-            </div>
+<div class="container">
+    <div class="row g-0 align-items-center mb-5">
+        <div class="d-none d-lg-flex col-3"></div>
+        <div class="col-sm-12 col-lg-6 text-center">
+            <h1 class="header">Отзывы</h1>
+        </div>
+        <div class="col-sm-12 col-lg-3 text-center">
+            <button class="button-feedback" onclick="launchModal()">Оставьте свой отзыв!</button>
         </div>
     </div>
+    {% set index = 1 %}
+    {% for feedback in feedbacks %}
+    {% if index % 2 !=0 %}
+    <div class="row g-0 align-items-center">
+        <div class="col-sm-12 col-lg-2 text-center">
+            {% if feedback.images %}
+                {% for i in feedback.images %}
+                    <img height="200" class="img-feedback" src="{{ asset('uploads/'~i) }}">
+                {% endfor %}
+            {% else %}
+                <img class="img-feedback" src="images/image 1.png">
+
+            {% endif %}
+        </div>
+        <div class="d-none d-lg-flex col-1"></div>
+        <div class="col-sm-12 col-lg-9 text-center feedback-form-1">
+            <h2 class="name-author">{{ feedback.name }}  {{ feedback.createAt|date('d.m.Y') }}</h2>
+            <p>{{ feedback.text }}</p>
+            {% if feedback.rating %}
+                <div>
+                    {% for i in 1..5 %}
+                        {% if feedback.rating >= i %}
+                            <img src="svg/n.svg">
+                        {% else %}
+                            <img src="svg/i.svg">
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        {% else %}
+            <div class="row g-0 align-items-center">
+                <div class="col-sm-12 col-lg-9 text-center feedback-form-2">
+                    <h2 class="name-author">{{ feedback.name }}  {{ feedback.createAt|date('d.m.Y') }}</h2>
+                    <p>{{ feedback.text }}</p>
+                    <div>
+                        {% for i in 1..5 %}
+                            {% if feedback.rating >= i %}
+                                <img src="svg/n.svg">
+                            {% else %}
+                                <img src="svg/i.svg">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-2 text-center">
+                    {% if feedback.images %}
+                        {% for i in feedback.images %}
+                            <img height="200" class="img-feedback" src="{{ asset('uploads/'~i) }}">
+                        {% endfor %}
+                    {% else %}
+                        <div class="d-none d-lg-flex col-1"></div>
+                        <img class="img-feedback" src="images/image 1.png">
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+        {% set index = index + 1 %}
+        {% endfor %}
+    </div>
     {% include './particles/modal.html.twig' %}
-{% endblock %}
+    {% endblock %}
