@@ -1,4 +1,4 @@
-<div class="modal modal-lg fade" tabindex="-1" id="exampleModalCaroulsel">
+<div class="modal modal-xl fade" tabindex="-1" id="exampleModalCaroulsel">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,12 +9,12 @@
                     <div class="carousel-inner" id="images">
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                            data-bs-slide="prev">
+                            data-bs-slide="prev" id="prevImage">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                            data-bs-slide="next">
+                            data-bs-slide="next" id="nextImage">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -28,6 +28,13 @@
 <script>
     function launchModalCaroulsel(images) {
         let orderModal = new bootstrap.Modal(document.getElementById('exampleModalCaroulsel'), {})
+        if (images.length < 2) {
+            document.getElementById('prevImage').style.display = 'none';
+            document.getElementById('nextImage').style.display = 'none';
+        } else {
+            document.getElementById('prevImage').style.display = 'unset';
+            document.getElementById('nextImage').style.display = 'unset';
+        }
         for (let i = 0; i < images.length; i++) {
             if (i === 0) {
                 document.getElementById('images').innerHTML =

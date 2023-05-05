@@ -6,7 +6,9 @@
         <div class="row row-cols-2 row-cols-lg-3">
             <div class="col-sm-6 col-lg-4 text-center mb-3">
                 <div><img class="img-contacts" src="svg/Group 2.svg"></div>
+                {% if contacts.number1 %}
                 <a class="text-contacts d-block" href="tel:{{ contacts.number1 }}">{{ contacts.number1 }}</a>
+                {% endif %}
                 {% if contacts.number2 %}
                     <a class="text-contacts d-block" href="tel:{{ contacts.number2 }}">{{ contacts.number2 }}</a>
                 {% endif %}
