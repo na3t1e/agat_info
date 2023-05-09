@@ -52,6 +52,15 @@ class FeedbackController extends AbstractController
                 $entityManager->persist($feedback);
                 $entityManager->flush();
                 return $this->redirectToRoute($request->get('_route'), $request->query->all());
+            } else {
+                return $this->render('main/feedback.html.twig',
+                    [
+                        'controller_name' => 'FeedbackController',
+                        'feedbacks' => $feedbackRepository->findBy(['status' => 'active']),
+                        'feedbackForm' => $feedbackForm->createView(),
+                        'feedbackCreateForm' => $feedbackCreateForm->createView(),
+                        'createError' => true
+                    ]);
             }
         }
         return $this->render('main/feedback.html.twig',
@@ -60,6 +69,7 @@ class FeedbackController extends AbstractController
                 'feedbacks' => $feedbackRepository->findBy(['status' => 'active']),
                 'feedbackForm' => $feedbackForm->createView(),
                 'feedbackCreateForm' => $feedbackCreateForm->createView(),
+                'createError' => false
             ]);
     }
 

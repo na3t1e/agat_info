@@ -55,6 +55,15 @@ class AdminFeedbackController extends AbstractController
                     $entityManager->flush();
                     return $this->redirectToRoute("app_admin_feedbacks");
                 }
+            } else {
+                return $this->render('admin/feedback.html.twig', [
+                    'controller_name' => 'AdminFeedbackController',
+                    'newFeedbacks' => $newFeedbacks,
+                    'activeFeedbacks' => $activeFeedbacks,
+                    'archivedFeedbacks' => $archivedFeedbacks,
+                    'feedbackEditForm' => $feedbackEditForm->createView(),
+                    'editError' => true,
+                ]);
             }
         }
         return $this->render('admin/feedback.html.twig', [
@@ -62,7 +71,8 @@ class AdminFeedbackController extends AbstractController
             'newFeedbacks' => $newFeedbacks,
             'activeFeedbacks' => $activeFeedbacks,
             'archivedFeedbacks' => $archivedFeedbacks,
-            'feedbackEditForm' => $feedbackEditForm->createView()
+            'feedbackEditForm' => $feedbackEditForm->createView(),
+            'editError' => false,
         ]);
     }
 

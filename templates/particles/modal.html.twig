@@ -22,7 +22,6 @@
                 </div>
 
                 {{ form_row(feedbackCreateForm.images) }}
-                {{ form_errors(feedbackCreateForm.images) }}
                 <div class="row text-center">
                     {{ form_row(feedbackCreateForm.save) }}
                 </div>
@@ -34,9 +33,11 @@
 </div>
 
 <script>
+
     function launchModal(actionText) {
         let orderModal = new bootstrap.Modal(document.getElementById('exampleModal'), {})
         orderModal.toggle();
+        document.getElementById('feedback_write_rating').setAttribute('value', '0');
     }
 
     var numCreateFiles = 0;
@@ -71,4 +72,13 @@
 
     });
 
+    function openCreateFormError() {
+        let orderModal = new bootstrap.Modal(document.getElementById('exampleModal'), {})
+        orderModal.toggle();
+    }
+
 </script>
+
+{% if createError == 1 %}
+    <script>openCreateFormError()</script>
+{% endif %}

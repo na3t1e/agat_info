@@ -41,6 +41,17 @@
             });
         }
         addEditInput();
+
+        function openEditFormError() {
+            var myOffcanvas = document.getElementById('offcanvasBottom')
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+            bsOffcanvas.show()
+        }
+
     </script>
+
+    {% if editError == 1 %}
+        <script>openEditFormError()</script>
+    {% endif %}
     {% include('./particles/modal_show_image.html.twig') %}
 {% endblock %}
