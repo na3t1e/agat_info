@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!caroulsel_void.jpg
+!sale_void.png
+!image_feedback.png
