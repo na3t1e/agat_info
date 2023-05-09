@@ -235,3 +235,30 @@ body {
     font-family: Segoe UI;
     font-weight: lighter;
 }
+
+.skiptranslate {
+    display: none !important;
+}
+
+/* language */
+
+.language {
+    position: fixed;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.language__img {
+    z-index: 999;
+    margin: 2px;
+    cursor: pointer;
+    opacity: .5;
+}
+
+.language__img:hover,
+.language__img_active {
+    opacity: 1;
+}

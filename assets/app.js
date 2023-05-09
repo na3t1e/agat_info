@@ -12,6 +12,7 @@ import './styles/app.css';
 import './css/bootstrap.min.css';
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 import './js/bootstrap.bundle.min.js';
+// import './js/google-translate.js';
 // start the Stimulus application
 import './bootstrap';
 // import 'controllers/jquery';
