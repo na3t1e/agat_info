@@ -54,7 +54,8 @@
     addCreateInput();
 
     $(document).ready(function () {
-        $('#feedback_write_text_help').html('Осталось символов: <span id="text-count" class="text-dark-blue">1000</span>');
+        let currentCount = 1000 - $('#feedback_write_text').val().length
+        $('#feedback_write_text_help').html('Осталось символов: <span id="text-count" class="text-dark-blue">'+currentCount+'</span>');
         var max_length = 1000;
         $('#feedback_write_text').keyup(function () {
             var len = max_length - $(this).val().length;

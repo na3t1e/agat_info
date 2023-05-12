@@ -76,7 +76,7 @@ class FeedbackWriteType extends AbstractType
                     new All(new Image([
                         'maxSize' => "5M"
                     ])),
-                    new Count(null, null, 3)],
+                    new Count(null, null, 3, null, null, null, 'Максимальное количество фото: 3. Заполните заново')],
             ])
             ->add('status', HiddenType::class, [
                 'required' => false

@@ -22,8 +22,8 @@ class Feedback
     private ?string $text = null;
 
     #[ORM\Column(nullable: true)]
-    #[Assert\LessThanOrEqual(value: 5, message: 'Рейтинг должен быть меньше или равен 5')]
-    #[Assert\GreaterThanOrEqual(value: 1, message: 'Рейтинг должен быть больше или равно 1')]
+    #[Assert\LessThanOrEqual(value: 5, message: 'Заполните оценку')]
+    #[Assert\GreaterThanOrEqual(value: 1, message: 'Заполните оценку')]
     private ?int $rating = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]

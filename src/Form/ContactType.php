@@ -33,8 +33,8 @@ class ContactType extends AbstractType
             ->add('number2', TextType::class, ['required' => false,
                 'label' => $this->translator->trans('general.number2')])
             ->add('email', EmailType::class, ['required' => false])
-            ->add('tg', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.tg')])
-            ->add('wa', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.wa')])
+            ->add('tg', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.tg'), 'help' => 'Логин в телеграме без @, например: dg_blvckgvd'])
+            ->add('wa', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.wa'),  'help' => 'Телефон WhatsApp, например: +79216423639'])
             ->add('workTime', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.workTime')])
             ->add('address', TextType::class, ['required' => false, 'label' => $this->translator->trans('general.address')])
             ->add('save', SubmitType::class, ['label' => $this->translator->trans('general.save')]);
