@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Авиакомпания АГАТ | Главная{% endblock %}
+{% block title %}{{ seoService.findByPath(app.request.pathinfo).title|default('Авиакомпания АГАТ | Главная') }}{% endblock %}
 {% block noncontainer %}
     <div class="row mt-0 video-container">
         <video autoplay muted loop preload="none" poster="{{ asset('images/skies.png') }}" type="video/mp4"

@@ -1,0 +1,77 @@
+{% extends 'baseAdmin.html.twig' %}
+{% form_theme seoCreateForm 'bootstrap_5_layout.html.twig' %}
+{% form_theme seoEditForm 'bootstrap_5_layout.html.twig' %}
+{% block title %}АГАТ | Администратор - SEO{% endblock %}
+
+{% block body %}
+
+{#    <div class="row d-block d-lg-none">#}
+{#        <button class="btn btn-success mb-5 fs-2" type="button" data-bs-toggle="offcanvas"#}
+{#                data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Создать#}
+{#        </button>#}
+{#    </div>#}
+{#    <button class="d-none d-lg-flex btn btn-success float-end mb-5" type="button" data-bs-toggle="offcanvas"#}
+{#            data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Создать#}
+{#    </button>#}
+
+    <div class="offcanvas offcanvas-top " tabindex="-1" id="offcanvasTop" data-bs-backdrop="true"
+         aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasTopLabel">Создать запись</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            {{ form(seoCreateForm) }}
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-bottom " tabindex="-1" id="offcanvasBottom" data-bs-backdrop="true"
+         aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Изменить запись</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            {{ form(seoEditForm) }}
+{#            <button class="btn btn-danger" onclick="deleteSeo(document.getElementById('seo_edit_id').value)">#}
+{#                Удалить запись#}
+{#            </button>#}
+        </div>
+    </div>
+
+    <table class="table table-bordered" id="table">
+        <thead>
+        <tr>
+            <th>Путь</th>
+            <th>Заголовок</th>
+            <th>Описание</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for s in seo %}
+            <tr onclick="openEditForm('{{ s.id }}','{{ s.path }}','{{ s.title }}','{{ s.description }}')">
+                <td>{{ s.path }}</td>
+                <td>{{ s.title }}</td>
+                <td>{{ s.description }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        function openEditForm(id, path, title, description, robots) {
+            event.stopPropagation()
+            var myOffcanvas = document.getElementById('offcanvasBottom')
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+            bsOffcanvas.show()
+            document.getElementById('seo_edit_id').value = id;
+            document.getElementById('seo_edit_path').value = path;
+            document.getElementById('seo_edit_title').value = title;
+            document.getElementById('seo_edit_description').value = description;
+        }
+        // function deleteSeo(id) {
+        //     window.location = '/admin/seo/delete/'+id
+        // }
+    </script>
+
+{% endblock %}

@@ -73,11 +73,11 @@ class FeedbackController extends AbstractController
             ]);
     }
 
-    #[Route('/feedbacks/{id}', name: 'app_feedback')]
-    public function getFeedback(FeedbackRepository $feedbackRepository,
-                                                   $id)
-    {
-        return $this->render('particles/modal_feedback_caroulsel.html.twig', [
-        ]);
-    }
+//    #[Route('/feedbacks/{id}', name: 'app_feedback')]
+//    public function getFeedback(FeedbackRepository $feedbackRepository,
+//                                                   $id)
+//    {
+//        return $this->render('particles/modal_feedback_caroulsel.html.twig', [
+//        ]);
+//    }
 }

@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Авиакомпания АГАТ | Контакты{% endblock %}
+{% block title %}{{ seoService.findByPath(app.request.pathinfo).title|default('Авиакомпания АГАТ | Контакты') }}{% endblock %}
 
 {% block noncontainer %}
     <div class="container-fluid container-blue">

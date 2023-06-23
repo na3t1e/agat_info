@@ -10,26 +10,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="manifest" href="/favicon/site.webmanifest">
-    {#    <meta name="robots" content="{{ seo.robots|default('index, follow') }}"/> #}
-    {#    <meta name="description" content="{{ seo.description|default('Пустое описание') }}"> #}
-    {#    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}"> #}
-    {#    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}"> #}
-    {#    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}"> #}
-    {#    <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}"> #}
-    {#    <link rel="mask-icon" href="{{ asset('favicon/safari-pinned-tab.svg') }}" color="#5bbad5"> #}
-    {#    <meta name="msapplication-TileColor" content="#da532c"> #}
-    {#    <meta name="theme-color" content="#ffffff"> #}
-    {#    <meta property="og:title" content="Агат" /> #}
-    {#    <meta property="og:type" content="website" /> #}
-    {#    <meta property="og:url" content="{{ app.request.uri }}" /> #}
-    {#    <meta property="og:image" content="https://karkasich.ru/images/og-light.jpg" /> #}
-
-    {#    <meta name="twitter:card" content="summary_large_image"> #}
-    {#    <meta property="twitter:url" content="{{ app.request.uri }}"> #}
-    {#    <meta name="twitter:title" content="Какрасыч"> #}
-    {#    <meta name="twitter:description" content="Многие хотят себе классные заборы, навесы, ворота и так далее! Так вот, мы готовы предоставить вам это!"> #}
-    {#    <meta name="twitter:image" content="https://karkasich.ru/images/og-light.jpg"> #}
-    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% include 'particles/opengraph.html.twig' %}
 
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}

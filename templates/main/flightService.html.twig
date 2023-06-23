@@ -1,5 +1,5 @@
     {% extends 'base.html.twig' %}
-    {% block title %}Авиакомпания АГАТ | Услуги по выполнению авиационных работ{% endblock %}
+    {% block title %}{{ seoService.findByPath(app.request.pathinfo).title|default('Авиакомпания АГАТ | Услуги по выполнению авиационных работ') }}{% endblock %}
     {% block body %}
         <div class="container-sm">
         <div class="row mb-5">
