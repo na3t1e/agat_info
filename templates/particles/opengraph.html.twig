@@ -7,7 +7,7 @@
         <meta name="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="{{ app.request.uri }}">
         <meta name="twitter:title" content='Авиакомпания "АГАТ"'>
-        <meta name="twitter:description" content="Многие хотят себе классные заборы, навесы, ворота и так далее! Так вот, мы готовы предоставить вам это!">
+        <meta name="twitter:description" content="{{ seoService.findByPath(app.request.pathinfo).description|default('Авиакомпания АГАТ') }}">
         <meta name="twitter:image" content="{{app.request.getSchemeAndHttpHost()}}/opengraph/og-light.jpg">
 
         <meta name="description" content="{{ seoService.findByPath(app.request.pathinfo).description|default('Авиакомпания АГАТ') }}">
