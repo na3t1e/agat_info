@@ -36,7 +36,10 @@ class OrderType extends AbstractType
                 'label' => $this->translator->trans('general.email')])
             ->add('serviceType', TextType::class, [
                 'required' => true,
-                'label' => $this->translator->trans('general.serviceType')
+                'label' => $this->translator->trans('general.serviceType'),
+                'attr' => [
+                    'readonly' => 'readonly',
+                ],
             ])
             ->add('save', SubmitType::class, ['label' => $this->translator->trans('general.save')]);
     }
