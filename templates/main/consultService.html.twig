@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}Авиакомпания АГАТ | Услуги оценки соответствия воздушных судов, консультации{% endblock %}
 {% block body %}
     <div class="container-sm">
         <div class="row mb-5">
@@ -25,6 +26,7 @@
     <div class="container-sm">
         {% set i = 1 %}
         {% for s in services %}
+            {% if s.isVisible == 1 %}
             <div class="row shadow-blue-outer mb-5 {% if i % 2 == 0 %}wow fadeInRightBig{% else %}wow fadeInLeftBig{% endif %}">
                 <div class="col-12 col-lg-5 ps-0 pe-0">
                     <img src="{{ asset('uploads/' ~ s.image|default('image_feedback.png')) }}" class="img-fluid" style="height: 100%; object-fit: cover">
@@ -36,12 +38,14 @@
                     </p>
                     <div class="row">
                         <div class="col-12 text-center">
-                            <a class="btn-dark-blue rounded-0 fs-4 px-5 py-2  text-decoration-none">Отправить заявку</a>
+                            <a class="btn-dark-blue rounded-0 fs-4 px-5 py-2  text-decoration-none" onclick="launchModal(`{{ s.title }}`)">Отправить заявку</a>
                         </div>
                     </div>
                 </div>
             </div>
             {% set i = i + 1 %}
+            {% endif %}
         {% endfor %}
     </div>
+    {% include './particles/orderModal.html.twig' %}
 {% endblock %}

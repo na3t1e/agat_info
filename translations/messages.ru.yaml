@@ -18,3 +18,7 @@ general:
   text: Текст
   rating: Оценка
   createAt: Дата создания
+  isVisible: Отображать на страницах
+  phone: Телефонный номер
+  email: Почтовый адрес
+  serviceType: Тип услуги

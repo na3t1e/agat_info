@@ -23,6 +23,9 @@ class AircraftMaintenanceServiceEntity
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $image = null;
 
+    #[ORM\Column]
+    private ?bool $isVisible = true;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class AircraftMaintenanceServiceEntity
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function isIsVisible(): ?bool
+    {
+        return $this->isVisible;
+    }
+
+    public function setIsVisible(bool $isVisible): self
+    {
+        $this->isVisible = $isVisible;
 
         return $this;
     }

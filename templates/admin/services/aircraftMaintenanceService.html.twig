@@ -51,6 +51,7 @@
                                "{{ s.id }}",
                                "{{ s.title }}",
                                "{{ s.description | raw | escape('js') }}",
+                               "{{ s.isVisible }}",
                                "{{ s.image }}",
                                )'
                     >Редактировать</a>
@@ -93,7 +94,7 @@
             bsOffcanvas.show()
         }
 
-        function openEditForm(id, name, description) {
+        function openEditForm(id, name, description, isVisible) {
             event.stopPropagation()
             var myOffcanvas = document.getElementById('offcanvasBottom')
             var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
@@ -104,6 +105,11 @@
                 console.log(CKEDITOR.instances[instanceName]);
             }
             CKEDITOR.instances.aircraft_maintenance_service_edit_description.setData(description)
+            if (isVisible === "1") {
+                document.getElementById('aircraft_maintenance_service_edit_isVisible').value = 1
+            } else {
+                document.getElementById('aircraft_maintenance_service_edit_isVisible').value = 0
+            }
         }
 
         function deleteProduct(id) {

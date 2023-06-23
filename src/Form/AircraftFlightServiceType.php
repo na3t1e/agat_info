@@ -7,6 +7,7 @@ use App\Entity\ConsultAircraftServiceEntity;
 use App\Entity\FlightServiceEntity;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -36,6 +37,13 @@ class AircraftFlightServiceType extends AbstractType
             ->add('description', CKEditorType::class, [
                 'required' => false,
                 'label' => $this->translator->trans('general.description')])
+            ->add('isVisible', ChoiceType::class, [
+                'required' => true,
+                'choices' => [
+                    'Да' => true,
+                    'Нет' => false,
+                ],
+                'label' => $this->translator->trans('general.isVisible')])
             ->add('image', FileType::class, [
                 'required' => false,
                 'mapped' => false,

@@ -1,0 +1,33 @@
+{% form_theme orderForm 'bootstrap_5_layout.html.twig' %}
+<div class="modal fade" tabindex="-1" id="exampleModal">
+    <div class="modal-dialog">
+        <div class="modal-content border-blue-bold">
+
+            <div class="modal-body">
+                {{ form_start(orderForm) }}
+                {{ form_rest(orderForm) }}
+                {{ form_end(orderForm) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function launchModal(serviceType) {
+        let orderModal = new bootstrap.Modal(document.getElementById('exampleModal'), {})
+        document.getElementById('order_serviceType').value = serviceType
+        $("#order_phone").mask("+7(999) 999-99-99");
+        orderModal.toggle();
+    }
+
+    function openCreateFormError() {
+        let orderModal = new bootstrap.Modal(document.getElementById('exampleModal'), {})
+        orderModal.toggle();
+    }
+
+</script>
+
+{% if createError == 1 %}
+    <script>openCreateFormError()</script>
+{% endif %}

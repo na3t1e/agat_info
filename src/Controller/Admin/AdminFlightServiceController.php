@@ -57,7 +57,8 @@ class AdminFlightServiceController extends AbstractController
                 if ($service) {
                     $service
                         ->setTitle($serviceEditForm->get('title')->getData())
-                        ->setDescription($serviceEditForm->get('description')->getData());
+                        ->setDescription($serviceEditForm->get('description')->getData())
+                        ->setIsVisible($serviceEditForm->get('isVisible')->getData());
                 }
                 $uploadedFile = $serviceEditForm->get('image')->getData();
                 if ($uploadedFile) {

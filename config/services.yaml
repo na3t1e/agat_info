@@ -6,12 +6,17 @@
 parameters:
 
 services:
-
     app.menuService:
         alias: App\Service\MenuService
         public: true
     app.contactService:
         alias: App\Service\ContactService
+        public: true
+    app.telegramService:
+        alias: App\Service\TelegramService
+        public: true
+    app.translator:
+        alias: Symfony\Contracts\Translation\TranslatorInterface
         public: true
     # default configuration for services in *this* file
     _defaults:
