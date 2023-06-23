@@ -1,5 +1,6 @@
         <meta property="og:title" content='Авиакомпания "АГАТ"' />
         <meta property="og:type" content="website" />
+        <meta property="og:description" content="{{ seoService.findByPath(app.request.pathinfo).description|default('Авиакомпания АГАТ') }}" />
         <meta property="og:url" content="{{ app.request.uri }}" />
         <meta property="og:image" content="{{app.request.getSchemeAndHttpHost()}}/opengraph/og-light.jpg" />
 
