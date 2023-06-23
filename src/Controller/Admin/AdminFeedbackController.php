@@ -5,11 +5,12 @@ namespace App\Controller\Admin;
 use App\Form\FeedbackEditType;
 use App\Repository\FeedbackRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+#[Security('is_granted("ROLE_ADMIN")')]
 class AdminFeedbackController extends AbstractController
 {
     #[Route('/admin/feedbacks', name: 'app_admin_feedbacks')]

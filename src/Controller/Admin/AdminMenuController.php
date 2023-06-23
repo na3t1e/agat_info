@@ -7,11 +7,12 @@ use App\Form\MenuType;
 use App\Repository\ContactRepository;
 use App\Repository\MenuRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+#[Security('is_granted("ROLE_ADMIN")')]
 class AdminMenuController extends AbstractController
 {
     #[Route('/admin/menu', name: 'app_admin_menu')]

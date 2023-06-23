@@ -5,10 +5,12 @@ namespace App\Controller\Admin;
 use App\Form\MainPageType;
 use App\Repository\MainPageRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+#[Security('is_granted("ROLE_ADMIN")')]
 class AdminMainPageController extends AbstractController{
     #[Route('/admin/pages/mainPage', name: 'app_admin_pages_main_page')]
     public function mainPage(Request                $request,
