@@ -12,6 +12,9 @@ services:
     app.contactService:
         alias: App\Service\ContactService
         public: true
+    app.truncateHtmlService:
+        alias: App\Service\TruncateHtmlService
+        public: true
     app.telegramService:
         alias: App\Service\TelegramService
         public: true

@@ -1,0 +1,40 @@
+<div class="modal fade" tabindex="-1" id="descriptionModal">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="">
+                <div class="row">
+                    <div class="col-12 col-lg-4 text-center">
+                        <img id="img" class="img-fluid">
+                        <a class="d-block btn-dark-blue mt-3 rounded-0 sticky-bottom  px-5 py-2  text-decoration-none" id="order">Отправить заявку</a>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <p id="title" class="fs-3 text-center text-lg-start"></p>
+                        <p id="more-description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    function launchDescriptionModal(title, description, image) {
+        let descriptionModal = new bootstrap.Modal(document.getElementById('descriptionModal'), {})
+        document.getElementById('img').src = image;
+        document.getElementById('title').innerText = title;
+        document.getElementById('more-description').innerHTML = description;
+        document.getElementById('order').setAttribute('onclick', "orderCLick(\`"+title+"\`)");
+        descriptionModal.toggle();
+    }
+    function orderCLick(title) {
+        document.getElementById('descriptionModal').classList.remove('show');
+        document.getElementById('descriptionModal').style = "display: none;";
+        document.getElementsByClassName('modal-backdrop')[0].remove();
+        launchModal(title);
+    }
+</script>
