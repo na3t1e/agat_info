@@ -35,7 +35,9 @@ class AdminSeoController extends AbstractController{
             $seo
                 ?->setTitle($seoEditForm->get('title')->getData())
                 ->setDescription($seoEditForm->get('description')->getData())
-                ->setPath($seoEditForm->get('path')->getData());
+                ->setPath($seoEditForm->get('path')->getData())
+                ->setKeywords($seoEditForm->get('keywords')->getData())
+            ;
             $seoService->create($seo);
             return $this->redirectToRoute($request->get('_route'), $request->query->all());
         }

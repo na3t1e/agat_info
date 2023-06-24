@@ -21,7 +21,11 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            {{ form(seoCreateForm) }}
+            {{ form_start(seoCreateForm) }}
+            {{ form_row(seoCreateForm.path) }}
+            {{ form_row(seoCreateForm.title) }}
+            {{ form_row(seoCreateForm.description) }}
+            {{ form_end(seoCreateForm) }}
         </div>
     </div>
 
@@ -32,10 +36,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            {{ form(seoEditForm) }}
-{#            <button class="btn btn-danger" onclick="deleteSeo(document.getElementById('seo_edit_id').value)">#}
-{#                Удалить запись#}
-{#            </button>#}
+            {{ form_start(seoEditForm) }}
+            {{ form_row(seoEditForm.path) }}
+            {{ form_row(seoEditForm.title) }}
+            {{ form_row(seoEditForm.description) }}
+            {{ form_end(seoEditForm) }}
+
         </div>
     </div>
 
@@ -45,21 +51,24 @@
             <th>Путь</th>
             <th>Заголовок</th>
             <th>Описание</th>
+            <th>Ключевые фразы</th>
         </tr>
         </thead>
         <tbody>
         {% for s in seo %}
-            <tr onclick="openEditForm('{{ s.id }}','{{ s.path }}','{{ s.title }}','{{ s.description }}')">
+            <tr onclick="openEditForm('{{ s.id }}','{{ s.path }}','{{ s.title }}','{{ s.description }}', `{{ s.keywords }}`)">
                 <td>{{ s.path }}</td>
                 <td>{{ s.title }}</td>
                 <td>{{ s.description }}</td>
+                <td>{{ s.keywords }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     <script>
-        function openEditForm(id, path, title, description, robots) {
+        function openEditForm(id, path, title, description, keywords) {
+
             event.stopPropagation()
             var myOffcanvas = document.getElementById('offcanvasBottom')
             var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
@@ -68,6 +77,53 @@
             document.getElementById('seo_edit_path').value = path;
             document.getElementById('seo_edit_title').value = title;
             document.getElementById('seo_edit_description').value = description;
+            document.getElementById('seo_edit_keywords').value = keywords;
+
+            let currentTitleCount = 65 - $('#seo_edit_title').val().length
+            $('#seo_edit_title_help').html('Осталось символов:' +
+                ' <span id="title-count" class="text-dark-blue">'+currentTitleCount+'</span>' +
+                ' (советуем от 35 до 65 символов, сейчас: ' +
+                '<span id="title-help" class="text-secondary>">' + $('#seo_edit_title').val().length  +'</span>'
+                + ')'
+            );
+            var max_title_length = 65;
+            $('#seo_edit_title').keyup(function () {
+                var lenTitle = max_title_length - $(this).val().length;
+                $('#title-count').text(lenTitle);
+                $('#title-help').text($('#seo_edit_title').val().length)
+                if (lenTitle < 0) {
+                    $('#seo_edit_save').attr('disabled', true)
+                    $('#title-count').removeClass('text-info')
+                    $('#title-count').addClass('text-danger')
+                } else {
+                    $('#seo_edit_save').attr('disabled', false)
+                    $('#title-count').removeClass('text-danger')
+                    $('#title-count').addClass('text-info')
+                }
+            });
+
+            let currentDescriptionCount = 320 - $('#seo_edit_description').val().length
+            $('#seo_edit_description_help').html('Осталось символов:' +
+                ' <span id="description-count" class="text-dark-blue">'+currentDescriptionCount+'</span>' +
+                ' (советуем от 120 до 320 символов, сейчас: ' +
+                '<span id="description-help" class="text-secondary>">' + $('#seo_edit_description').val().length+'</span>'
+                + ')'
+            );
+            var max_length = 320;
+            $('#seo_edit_description').keyup(function () {
+                var lenDescription = max_length - $(this).val().length;
+                $('#description-count').text(lenDescription);
+                $('#description-help').text($('#seo_edit_description').val().length)
+                if (lenDescription < 0) {
+                    $('#seo_edit_save').attr('disabled', true)
+                    $('#description-count').removeClass('text-info')
+                    $('#description-count').addClass('text-danger')
+                } else {
+                    $('#seo_edit_save').attr('disabled', false)
+                    $('#description-count').removeClass('text-danger')
+                    $('#description-count').addClass('text-info')
+                }
+            });
         }
         // function deleteSeo(id) {
         //     window.location = '/admin/seo/delete/'+id

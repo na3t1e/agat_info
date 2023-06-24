@@ -5,6 +5,7 @@
 
             <div class="modal-body">
                 {{ form_start(orderForm) }}
+                {{ form_widget(orderForm.name) }}
                 {{ form_rest(orderForm) }}
                 {{ form_end(orderForm) }}
             </div>

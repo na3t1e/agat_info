@@ -11,6 +11,7 @@
         <meta name="twitter:image" content="{{app.request.getSchemeAndHttpHost()}}/opengraph/og-light.jpg">
 
         <meta name="description" content="{{ seoService.findByPath(app.request.pathinfo).description|default('Авиакомпания АГАТ') }}">
+        <meta name="keywords" content="{{ seoService.findByPath(app.request.pathinfo).keywords|default('Авиакомпания АГАТ') }}" />
 
         <script>
                 let title = document.getElementsByTagName("title")[0].innerText;

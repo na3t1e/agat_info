@@ -41,6 +41,12 @@ class OrderType extends AbstractType
                     'readonly' => 'readonly',
                 ],
             ])
+            ->add('name', TextType::class, ['required' => false,
+                'attr' =>[
+                    'style' => 'visibility: hidden; height:0'
+                ],
+            ])
+
             ->add('save', SubmitType::class, ['label' => $this->translator->trans('general.save')]);
     }
 

@@ -20,6 +20,9 @@ class AircraftMaintenanceServiceController extends AbstractController
         $createError = 0;
         if ($orderForm->isSubmitted()) {
             if ($orderForm->isValid()) {
+                if ($orderForm->get('name')->getData()) {
+                    return $this->redirect('/bot');
+                }
                 $order = new Order(
                     $orderForm->get('fio')->getData(),
                     $orderForm->get('phone')->getData(),

@@ -38,10 +38,16 @@ class SeoEditType extends AbstractType
                 'label' => $this->translator->trans('general.path')
             ])
             ->add('description', null, [
-                'label' => $this->translator->trans('general.description')
+                'label' => $this->translator->trans('general.description'),
+                'help' => '320'
             ])
             ->add('title', null, [
-                'label' => $this->translator->trans('general.title')
+                'label' => $this->translator->trans('general.title'),
+                'help' => '65'
+            ])
+            ->add('keywords', null, [
+                'label' => $this->translator->trans('general.keywords'),
+                'help' => 'Советуем вводить не более 20 ключевых фраз (через запятую)'
             ])
             ->add('save', SubmitType::class, [
                 'label' => $this->translator->trans('general.save')
