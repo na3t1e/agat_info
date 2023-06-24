@@ -92,21 +92,18 @@
         $(function() {
             $('.lazy').lazy();
         });
-        const videoElement = document.getElementById('video');
-        videoElement.play().then(() => {}).catch((error) => {
-            videoElement.setAttribute("controls","controls");
-        });
-        // $('body').on('click touchstart', function () {
-        //     const videoElement = document.getElementById('video');
-        //     if (videoElement.playing) {
-        //         // video is already playing so do nothing
-        //     }
-        //     else {
-        //         // video is not playing
-        //         // so play video now
-        //         videoElement.play();
-        //     }
+        // const videoElement = document.getElementById('video');
+        // videoElement.play().then(() => {}).catch((error) => {
+        //     videoElement.setAttribute("controls","controls");
         // });
+        $('body').on('click touchstart', function () {
+            const videoElement = document.getElementById('video');
+            if (videoElement.playing) {
+            }
+            else {
+                videoElement.play();
+            }
+        });
     </script>
 
 {% endblock %}
