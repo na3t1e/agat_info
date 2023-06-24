@@ -32,14 +32,14 @@
                 <div class="col-12 col-lg-5 ps-0 pe-0">
                     <img src="{{ asset('uploads/' ~ s.image|default('image_feedback.png')) }}" class="img-fluid" style="width: 100%; object-fit: cover">
                 </div>
-                <div class="col-12 col-lg-7 py-5">
-                    <h2 class="text-light-blue text-center mb-4">{{ s.title }}</h2>
+                <div class="col-12 col-lg-7 py-2">
+                    <h2 class="text-light-blue text-center mb-2">{{ s.title }}</h2>
                     <p id="description">
                         {{ truncateHtmlService.truncate(s.description|raw)|raw }}
                     </p>
                     <div class="row">
                         <div class="row text-center">
-                            <div class="col-12 mt-4">
+                            <div class="col-12 mt-3">
                                 <a class="btn-dark-blue rounded-0 fs-4 px-5 py-2  text-decoration-none" onclick="launchDescriptionModal(
                                         `{{ s.title }}`,
                                         `{{ s.description }}`,
@@ -47,7 +47,7 @@
                                     Подробнее
                                 </a>
                             </div>
-                            <div class="col-12 mt-4">
+                            <div class="col-12 mt-3">
                                 <a class="btn-dark-blue rounded-0 fs-4 px-5 py-2  text-decoration-none" onclick="launchModal(`{{ s.title }}`)">Отправить заявку</a>
                             </div>
 
