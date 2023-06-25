@@ -5,7 +5,7 @@
     <div class="container-fluid container-blue">
         <div class="row row-cols-2 row-cols-lg-3">
             <div class="col-sm-6 col-lg-4 text-center mb-3">
-                <div><img class="img-contacts lazy" src="svg/Group 2.svg"></div>
+                <div><img class="img-contacts lazy" data-src="svg/Group 2.svg"></div>
                 {% if contacts.number1 %}
                 <a class="text-contacts d-block" href="tel:{{ contacts.number1 }}">{{ contacts.number1 }}</a>
                 {% endif %}
@@ -15,32 +15,32 @@
             </div>
             {% if contacts.email %}
                 <div class="col-sm-6 col-lg-4  text-center mb-3">
-                    <div><img class="img-contacts lazy" src="svg/Group 3.svg"></div>
+                    <div><img class="img-contacts lazy" data-src="svg/Group 3.svg"></div>
                     <a class="text-contacts" href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
                 </div>
             {% endif %}
             {% if contacts.workTime %}
                 <div class="col-sm-6 col-lg-4  text-center mb-3">
-                    <div><img class="img-contacts lazy" src="svg/Clip path group.svg"></div>
+                    <div><img class="img-contacts lazy" data-src="svg/Clip path group.svg"></div>
                     <p class="text-contacts">{{ contacts.workTime }}</p>
                 </div>
             {% endif %}
 
             {% if contacts.wa %}
                 <div class="col-sm-6 col-lg-4  text-center mb-3">
-                    <div><img class="img-contacts lazy" src="svg/Group.svg"></div>
+                    <div><img class="img-contacts lazy" data-src="svg/Group.svg"></div>
                     <a class="text-contacts" href="https://wa.me/{{ contacts.wa }}">Написать в WhatsApp</a>
                 </div>
             {% endif %}
             {% if contacts.tg %}
                 <div class="col-sm-6 col-lg-4  text-center mb-3">
-                    <div><img class="img-contacts lazy" src="svg/Layer_1.svg"></div>
+                    <div><img class="img-contacts lazy" data-src="svg/Layer_1.svg"></div>
                     <a class="text-contacts" href="https://t.me/{{ contacts.tg }}">Написать в Telegram</a>
                 </div>
             {% endif %}
             {% if contacts.address %}
                 <div class="col-sm-6 col-lg-4  text-center mb-3">
-                    <div><img class="img-contacts lazy" src="svg/Group 4.svg"></div>
+                    <div><img class="img-contacts lazy" data-src="svg/Group 4.svg"></div>
                     <p class="text-contacts">{{ contacts.address }}</p>
                 </div>
             {% endif %}

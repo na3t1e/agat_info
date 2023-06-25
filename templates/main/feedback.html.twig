@@ -17,7 +17,7 @@
             {% if index % 2 !=0 %}
                 <div class="row px-3 mb-4 wow fadeInLeftBig">
                     <div class="col-12 col-md-3 px-0" onclick="launchModalCaroulsel({{ feedback.images|json_encode }})">
-                        <img class="col-12 img-fluid h-100" style="object-fit: cover" src="{{ asset('uploads/'~feedback.images[0]|default('image_feedback.png')) }}">
+                        <img class="col-12 img-fluid h-100" style="object-fit: cover" data-src="{{ asset('uploads/'~feedback.images[0]|default('image_feedback.png')) }}">
                         <div class="text-center fs-6 col-8 fw-bold bg-light-blue text-white" style="position: relative; z-index: 20; margin-top: -30px">
                             <p class="text-white">Фотографий: {{ feedback.images|length }}<p>
                         </div>
@@ -41,7 +41,7 @@
             {% else %}
                 <div class="row px-3 mb-4 wow fadeInRightBig">
                     <div class="col-12 d-md-none px-0" onclick="launchModalCaroulsel({{ feedback.images|json_encode }})">
-                        <img class="col-12 img-fluid h-100 lazy" style="object-fit: cover" src="{{ asset('uploads/'~feedback.images[0]|default('image_feedback.png')) }}">
+                        <img class="col-12 img-fluid h-100 lazy" style="object-fit: cover" data-src="{{ asset('uploads/'~feedback.images[0]|default('image_feedback.png')) }}">
                         <div class="text-center fs-6 col-8 fw-bold bg-light-blue text-white" style="position: relative; z-index: 20; margin-top: -30px">
                             <p class="text-white">Фотографий: {{ feedback.images|length }}<p>
                         </div>
@@ -62,7 +62,7 @@
                         {% endif %}
                     </div>
                     <div class="d-none d-md-inline-block col-12 col-md-3 px-0" onclick="launchModalCaroulsel({{ feedback.images|json_encode }})">
-                        <img class="col-12 img-fluid h-100" style="object-fit: cover" src="{{ asset('uploads/'~feedback.images[0]|default('image_feedback.png')) }}">
+                        <img class="col-12 img-fluid h-100" style="object-fit: cover" data-src="{{ asset('uploads/'~feedback.images[0]|default('image_feedback.png')) }}">
                         <div class="text-center fs-6 col-8 fw-bold bg-light-blue text-white" style="position: relative; z-index: 20; margin-top: -30px">
                             <p class="text-white">Фотографий: {{ feedback.images|length }}<p>
                         </div>

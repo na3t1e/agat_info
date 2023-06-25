@@ -29,7 +29,7 @@
                 {% if s.isVisible == 1 %}
                 <div class="row shadow-blue-outer mb-5 {% if i % 2 == 0 %}wow fadeInRightBig{% else %}wow fadeInLeftBig{% endif %}">
                     <div class="col-12 col-lg-5 ps-0 pe-0">
-                        <img src="{{ asset('uploads/' ~ s.image|default('image_feedback.png')) }}" class="img-fluid lazy" style="width: 100%; object-fit: cover">
+                        <img data-src="{{ asset('uploads/' ~ s.image|default('image_feedback.png')) }}" class="img-fluid lazy" style="width: 100%; object-fit: cover">
                     </div>
                     <div class="col-12 col-lg-7 py-2">
                         <h2 class="text-light-blue text-center mb-2">{{ s.title }}</h2>
