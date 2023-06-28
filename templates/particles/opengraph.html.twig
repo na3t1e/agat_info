@@ -3,6 +3,7 @@
         <meta property="og:description" content="{{ seoService.findByPath(app.request.pathinfo).description|default('Авиакомпания АГАТ') }}" />
         <meta property="og:url" content="{{ app.request.uri }}" />
         <meta property="og:image" content="{{app.request.getSchemeAndHttpHost()}}/opengraph/og-light.jpg" />
+        <meta property="og:image" content=`{{ seoService.getOpenGraphImage(seoService.findByPath(app.request.pathinfo).title) }}` />
 
         <meta name="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="{{ app.request.uri }}">
