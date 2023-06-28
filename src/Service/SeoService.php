@@ -40,36 +40,55 @@ class SeoService
         ]);
     }
 
-    public function getOpenGraphImage($text) {
+    public function getOpenGraphImage($text, $path) {
         $image = imagecreatefromjpeg($this->appKernel->getProjectDir()."/public/opengraph/og-light.jpg");
         $image_width = imagesx($image);
         $image_height = imagesy($image);
 
-        $font_size = 32;
-        $angle = 0;
         $font = $this->appKernel->getProjectDir()."/public/opengraph/roboto-black.ttf";
+        $angle = 0;
+        $font_size = 32;
 
-        $text_bound = imageftbbox($font_size, 0, $font, $text);
+        $text_bound = $this->getTextBox($font_size, $text, $font);
+
         $lower_left_x =  $text_bound[0];
-        $lower_left_y =  $text_bound[1];
         $lower_right_x = $text_bound[2];
         $lower_right_y = $text_bound[3];
-        $upper_right_x = $text_bound[4];
         $upper_right_y = $text_bound[5];
-        $upper_left_x =  $text_bound[6];
-        $upper_left_y =  $text_bound[7];
+        $text_width =  $lower_right_x - $lower_left_x;
+        $text_height = $lower_right_y - $upper_right_y;
+        while ($text_width > $image_width) {
+            $font_size --;
+            $text_bound = $this->getTextBox($font_size, $text, $font);
 
-        //Get Text Width and text height
-        $text_width =  $lower_right_x - $lower_left_x; //or  $upper_right_x - $upper_left_x
-        $text_height = $lower_right_y - $upper_right_y; //or  $lower_left_y - $upper_left_y
+            $lower_left_x =  $text_bound[0];
+            $lower_right_x = $text_bound[2];
+            $lower_right_y = $text_bound[3];
+            $upper_right_y = $text_bound[5];
+            $text_width =  $lower_right_x - $lower_left_x;
+            $text_height = $lower_right_y - $upper_right_y;
+        }
 
-        //Get the starting position for centering
+
         $start_x_offset = ($image_width - $text_width) / 2;
         $start_y_offset = ($image_height - $text_height) - 20;
 
         $black = imagecolorallocate($image, 0, 0, 0);
         imagettftext($image, $font_size, $angle, $start_x_offset, $start_y_offset, $black, $font, $text);
-        imagejpeg($image, $this->appKernel->getProjectDir()."/public/opengraph/og-light1.jpg");
+        $kebab = $this->translatePathToKebabCase($path);
+        imagejpeg($image, $this->appKernel->getProjectDir()."/public/opengraph/og-$kebab.jpg");
         imagedestroy($image);
+    }
+
+    private function getTextBox($font_size, $text, $font): array {
+
+        return imageftbbox($font_size, 0, $font, $text);
+    }
+
+    public function translatePathToKebabCase($path) {
+        if ($path == "/") {
+            return "main";
+        }
+        return lcfirst(str_replace("/", '-', strtolower(mb_substr($path, 1, null))));
     }
 }
