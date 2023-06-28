@@ -73,8 +73,8 @@ class SeoService
         $start_x_offset = ($image_width - $text_width) / 2;
         $start_y_offset = ($image_height - $text_height) - 20;
 
-        $black = imagecolorallocate($image, 0, 0, 0);
-        imagettftext($image, $font_size, $angle, $start_x_offset, $start_y_offset, $black, $font, $text);
+        $color = imagecolorallocate($image, 4, 95, 134);
+        imagettftext($image, $font_size, $angle, $start_x_offset, $start_y_offset, $color, $font, $text);
         $kebab = $this->translatePathToKebabCase($path);
         imagejpeg($image, $this->appKernel->getProjectDir()."/public/opengraph/og-$kebab.jpg");
         imagedestroy($image);
