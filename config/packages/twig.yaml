@@ -8,6 +8,8 @@ twig:
 
     paths:
         '%kernel.project_dir%/vendor/sbyaute/star-rating-bundle/Resources/views': SbyauteStarRatingBundle
+        '%kernel.project_dir%/assets/': assets
+
 
 when@test:
     twig:

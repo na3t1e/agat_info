@@ -1,0 +1,17 @@
+{# {% form_theme orderForm 'bootstrap_5_layout.html.twig' %} #}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>{% block title %}Авиакомпания АГАТ{% endblock %}</title>
+</head>
+<body>
+{% apply inline_css(source("@assets/styles/email.css")) %}
+<div class="container">
+    {% block body %}
+    {% endblock %}
+</div>
+{% endapply %}
+</body>
+</html>

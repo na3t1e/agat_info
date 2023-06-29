@@ -1,0 +1,14 @@
+{% extends 'baseMail.html.twig' %}
+{% block body %}
+    <div class="header">
+        <h1 class="">Новый заказ!</h1>
+
+    </div>
+    <ul class="border">
+        <li>Имя заказчика: {{ order.fio }}</li>
+        <li>Мобильный номер: <a class="text-link" href="tel:{{ order.phone }}">{{ order.phone }}</a></li>
+        <li>Почтовый адрес: <a class="text-link">{{ order.email }}</a></li>
+        <li>Тип услуги: {{ order.serviceType }}</li>
+        <li>Раздел услуг: {{ order.serviceTitle }}</li>
+    </ul>
+{% endblock %}
