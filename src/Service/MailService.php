@@ -43,13 +43,9 @@ class MailService
     {
         $email = (new TemplatedEmail())
             ->from('akagat.info@mail.ru')
-            ->to(new Address('antondead1337@gmail.com'))
+            ->to(new Address($_ENV['MAIL_TO_ORDERS'] ?? 'antondead1337@gmail.com'))
             ->subject('Новый заказ! | Авиакомпания "АГАТ"')
-
-            // path of the Twig template to render
             ->htmlTemplate('emails/order.html.twig')
-
-            // pass variables (name => value) to the template
             ->context([
                 'order' => $data
             ]);
