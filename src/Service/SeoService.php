@@ -48,26 +48,18 @@ class SeoService
         $font = $this->appKernel->getProjectDir()."/public/opengraph/roboto-black.ttf";
         $angle = 0;
         $font_size = 32;
-
-        $text_bound = $this->getTextBox($font_size, $text, $font);
-
-        $lower_left_x =  $text_bound[0];
-        $lower_right_x = $text_bound[2];
-        $lower_right_y = $text_bound[3];
-        $upper_right_y = $text_bound[5];
-        $text_width =  $lower_right_x - $lower_left_x;
-        $text_height = $lower_right_y - $upper_right_y;
-        while ($text_width > $image_width) {
-            $font_size --;
+        do {
             $text_bound = $this->getTextBox($font_size, $text, $font);
-
             $lower_left_x =  $text_bound[0];
             $lower_right_x = $text_bound[2];
             $lower_right_y = $text_bound[3];
             $upper_right_y = $text_bound[5];
             $text_width =  $lower_right_x - $lower_left_x;
             $text_height = $lower_right_y - $upper_right_y;
-        }
+            if ($text_width > $image_width) {
+                $font_size--;
+            }
+        } while ($text_width > $image_width);
 
 
         $start_x_offset = ($image_width - $text_width) / 2;
