@@ -50,15 +50,16 @@ class SeoService
         $font_size = 32;
         do {
             $text_bound = $this->getTextBox($font_size, $text, $font);
+
             $lower_left_x =  $text_bound[0];
             $lower_right_x = $text_bound[2];
             $lower_right_y = $text_bound[3];
             $upper_right_y = $text_bound[5];
+
             $text_width =  $lower_right_x - $lower_left_x;
             $text_height = $lower_right_y - $upper_right_y;
-            if ($text_width > $image_width) {
-                $font_size--;
-            }
+
+            $font_size--;
         } while ($text_width > $image_width);
 
 
