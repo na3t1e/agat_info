@@ -2,7 +2,7 @@
 {% block title %}{{ seoService.findByPath(app.request.pathinfo).title|default('Авиакомпания АГАТ | Главная') }}{% endblock %}
 {% block noncontainer %}
     <div class="row mt-0 video-container">
-        <video id="video" autoplay loop muted playsinline preload="yes" poster="{{ asset('images/skies.png') }}"
+        <video id="video" autoplay loop muted playsinline preload="yes" poster="{{ asset('images/clouds.jpeg') }}"
                class="h-100">
             <source class="lazy" src="{{ asset('videos/video.mp4') }}" type="video/mp4">
         </video>
