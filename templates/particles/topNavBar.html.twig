@@ -9,9 +9,16 @@
 <nav class="navbar navbar-expand-xl bg-white navbar-light p-0 sticky-top border-bottom pt-1">
 
     <div class="container-fluid ">
-        <a class="navbar-brand me-5" href="{{ path('app_main') }}">
-            <img height="85" src="{{ asset('svg/logo.svg') }}" alt="logo">
-        </a>
+        <div>
+            <a class="navbar-brand me-5" href="{{ path('app_main') }}">
+                <img height="85" src="{{ asset('svg/logo.svg') }}" alt="logo">
+{#                <div class="d-flex d-sm-none fs-6 me-4 text-center text-dark-blue">#}
+{#                    г. Санкт-Петербург#}
+{#                </div>#}
+            </a>
+
+        </div>
+
 {#        <div class="language">#}
 {#            <img src="images/lang/ru.jpg" alt="ru" data-google-lang="ru" class="language__img">#}
 {#            <img src="images/lang/en.jpg" alt="en" data-google-lang="en" class="language__img">#}
@@ -19,9 +26,9 @@
 
         <div class="row ">
             <div class="d-block p-0 mt-3">
-                <div class="d-block d-sm-none fs-6 mb-1 text-center text-dark-blue">
-                    г. Санкт-Петербург
-                </div>
+{#                <div class="d-block d-sm-none fs-7 mb-1 text-center text-dark-blue">#}
+{#                    г. Санкт-Петербург#}
+{#                </div>#}
                 <div class="d-none d-sm-block fs-4 mb-1 text-center text-dark-blue">
                     г. Санкт-Петербург
                 </div>
@@ -103,6 +110,9 @@
                             Вход для<br> сотрудников
                         </button>
                     </div>
+                </div>
+                <div class="d-block d-sm-none mt-3 fs-4 mb-1 text-center text-dark-blue">
+                    г. Санкт-Петербург
                 </div>
             </div>
         </div>
