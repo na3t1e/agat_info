@@ -6,7 +6,7 @@
         }
     }
 </style>
-<nav class="navbar navbar-expand-lg bg-white navbar-light p-0 sticky-top border-bottom pt-1">
+<nav class="navbar navbar-expand-xl bg-white navbar-light p-0 sticky-top border-bottom pt-1">
 
     <div class="container-fluid ">
         <a class="navbar-brand me-5" href="{{ path('app_main') }}">
@@ -18,11 +18,11 @@
 {#        </div>#}
 
         <div class="row ">
-            <div class="d-none d-lg-block p-0 mt-3">
+            <div class="d-none d-xl-block p-0 mt-3">
                 <div class="fs-4 mb-1 text-center text-dark-blue">
                     г. Санкт-Петербург
                 </div>
-                <div class="navbar-nav d-none d-lg-flex ms-auto me-auto">
+                <div class="navbar-nav d-none d-xl-flex ms-auto me-auto">
                     <div class="row mt-1">
                         {% for menu in menuService.getMenu %}
                             {% if menu.isEnabled %}
@@ -76,15 +76,24 @@
                 </div>
                 <div class="col-6 mt-2 float-end text-end ">
                     <span class="text-dark-blue d-block fs-5">Контакты:</span>
-                    <span class="fs-6 d-block">
-                    {{  contactService.getContacts.email }}
-                    </span>
-                    <span class="fs-6 d-block">
+                    <a class="text-black fs-6 d-block" href="mailto:{{ contactService.getContacts.email }}">
+                        {{ contactService.getContacts.email }}
+                    </a>
+                    <a class="text-black fs-6 d-block" href="tel:{{ contactService.getContacts.number1 }}">
                         {{ contactService.getContacts.number1 }}
-                    </span>
-                    <span class="fs-6 d-block">
+                    </a>
+                    <a class="text-black fs-6 d-block" href="tel:{{ contactService.getContacts.number2 }}">
                         {{ contactService.getContacts.number2 }}
-                    </span>
+                    </a>
+{#                    <span class="fs-6 d-block">#}
+{#                    {{  contactService.getContacts.email }}#}
+{#                    </span>#}
+{#                    <span class="fs-6 d-block">#}
+{#                        {{ contactService.getContacts.number1 }}#}
+{#                    </span>#}
+{#                    <span class="fs-6 d-block">#}
+{#                        {{ contactService.getContacts.number2 }}#}
+{#                    </span>#}
                     <div class="align-self-center mt-2">
                         <button class="btn btn-light-blue rounded-3"
                                 onclick="window.location='{{ path('app_admin_main') }}'">
@@ -96,21 +105,29 @@
         </div>
 
 
-        <div class="navbar-text p-0 d-none d-lg-flex">
+        <div class="navbar-text p-0 d-none d-xl-flex">
             <div class="row gap-5 ">
                 <div class="col-auto">
                     <span class="text-dark-blue d-block fs-5">Контакты:</span>
-                    <span class="fs-6 d-block">
-                    {{  contactService.getContacts.email }}
-                    </span>
-                    <span class="fs-6 d-block">
+                    <a class="text-black fs-6 d-block" href="mailto:{{ contactService.getContacts.email }}">
+                        {{ contactService.getContacts.email }}
+                    </a>
+                    <a class="text-black fs-6 d-block" href="tel:{{ contactService.getContacts.number1 }}">
                         {{ contactService.getContacts.number1 }}
-                    </span>
-                    <span class="fs-6 d-block">
+                    </a>
+                    <a class="text-black fs-6 d-block" href="tel:{{ contactService.getContacts.number2 }}">
                         {{ contactService.getContacts.number2 }}
-                    </span>
-
-
+                    </a>
+{#                    <span class="text-dark-blue d-block fs-5">Контакты:</span>#}
+{#                    <span class="fs-6 d-block">#}
+{#                    {{  contactService.getContacts.email }}#}
+{#                    </span>#}
+{#                    <span class="fs-6 d-block">#}
+{#                        {{ contactService.getContacts.number1 }}#}
+{#                    </span>#}
+{#                    <span class="fs-6 d-block">#}
+{#                        {{ contactService.getContacts.number2 }}#}
+{#                    </span>#}
                 </div>
                 <div class="col-auto align-self-center">
                     <div class="text-center btn-light-blue rounded-3 p-2" onclick="window.location='{{ path('app_admin_main') }}'">
