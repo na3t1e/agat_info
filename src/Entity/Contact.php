@@ -14,11 +14,11 @@ class Contact
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 17, nullable: true)]
+    #[ORM\Column(length: 18, nullable: true)]
     #[Assert\Regex(pattern: "^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$^", message: "Введите номер телефона правильно!")]
     private ?string $number1 = null;
 
-    #[ORM\Column(length: 17, nullable: true)]
+    #[ORM\Column(length: 18, nullable: true)]
     #[Assert\Regex(pattern: "^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$^", message: "Введите номер телефона правильно!")]
     private ?string $number2 = null;
 

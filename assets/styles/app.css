@@ -7,13 +7,13 @@ html {
 body {
 
     font-family: "Magistral", sans-serif !important;
-    font-weight: 500 !important;
+    font-weight: 300 !important;
     font-style: normal !important;
     background-color: #FFFFFF !important;
     word-spacing: 5px;
 }
 h1 h2 h3 h4 h5 {
-    font-family: "Magistral Light", sans-serif !important;
+    font-family: "Magistral ", sans-serif !important;
 }
 
 .fs-7 {
@@ -116,6 +116,13 @@ h1 h2 h3 h4 h5 {
     }
 }
 
+.text-darker-blue {
+    color: #003d73!important;
+}
+
+.ls-2 {
+    letter-spacing: 2px!important;
+}
 .container-blue {
     background-color: #529AC6;
     padding: 0;

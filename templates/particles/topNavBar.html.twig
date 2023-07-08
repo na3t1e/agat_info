@@ -1,5 +1,5 @@
 <style>
-    @media (min-width: 992px) {
+    @media (min-width: 1200px) {
         #navbarNavDropdown {
             display: none !important;
             width: 0 !important;
@@ -10,7 +10,7 @@
 
     <div class="container-fluid ">
         <a class="navbar-brand me-5" href="{{ path('app_main') }}">
-            <img height="85" class="lazy" data-src="{{ asset('svg/logo.svg') }}" alt="logo">
+            <img height="85" src="{{ asset('svg/logo.svg') }}" alt="logo">
         </a>
 {#        <div class="language">#}
 {#            <img src="images/lang/ru.jpg" alt="ru" data-google-lang="ru" class="language__img">#}
@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-6 mt-2 float-end text-end ">
                     <span class="text-dark-blue d-block fs-5">Контакты:</span>
-                    <a class="text-black fs-6 d-block" href="mailto:{{ contactService.getContacts.email }}">
+                    <a class="text-black fs-6 d-block ls-2" href="mailto:{{ contactService.getContacts.email }}">
                         {{ contactService.getContacts.email }}
                     </a>
                     <a class="text-black fs-6 d-block" href="tel:{{ contactService.getContacts.number1 }}">
@@ -109,7 +109,7 @@
             <div class="row gap-5 ">
                 <div class="col-auto">
                     <span class="text-dark-blue d-block fs-5">Контакты:</span>
-                    <a class="text-black fs-6 d-block" href="mailto:{{ contactService.getContacts.email }}">
+                    <a class="text-black fs-6 d-block ls-2" href="mailto:{{ contactService.getContacts.email }}">
                         {{ contactService.getContacts.email }}
                     </a>
                     <a class="text-black fs-6 d-block" href="tel:{{ contactService.getContacts.number1 }}">
