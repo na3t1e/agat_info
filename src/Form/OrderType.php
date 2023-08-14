@@ -47,7 +47,12 @@ class OrderType extends AbstractType
                 ],
             ])
 
-            ->add('save', SubmitType::class, ['label' => $this->translator->trans('general.save')]);
+            ->add('save', SubmitType::class,
+                [
+                'label' => $this->translator->trans('general.save'),
+                'attr' => [
+                    'class' => 'btn-dark-blue'
+                ]]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

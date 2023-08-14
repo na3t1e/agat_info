@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-12 col-md-9 bg-light-blue p-4">
                         <h2 class="text-white text-center">{{ feedback.name }}  {{ feedback.createAt|date('d.m.Y') }}</h2>
-                        <p class="text-white text-center">{{ feedback.text }}</p>
+                        <p class="text-white text-start mx-2">{{ feedback.text }}</p>
                         {% if feedback.rating %}
                             <div class="text-center">
                                 {% for i in 1..5 %}
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-12 col-md-9 bg-dark-blue p-4">
                         <h2 class="text-white text-center">{{ feedback.name }}  {{ feedback.createAt|date('d.m.Y') }}</h2>
-                        <p class="text-white text-center">{{ feedback.text }}</p>
+                        <p class="text-white text-start mx-2">{{ feedback.text }}</p>
                         {% if feedback.rating %}
                             <div class="text-center">
                                 {% for i in 1..5 %}

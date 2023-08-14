@@ -76,8 +76,12 @@
                                         or (app.request.pathinfo == '/service/maintenance' and menu.link == '/service/flight')
                                         or (app.request.pathinfo == '/service/consult' and menu.link == '/service/flight'))
                                 %}
+                                text-light-blue
                                 active
-                                {% endif %}"
+                                {% else %}
+                                text-dark-blue
+                                {% endif %}
+                                "
                                        aria-current="page" href="{{ menu.link }}">{{ menu.title }}</a>
                                 </li>
                             {% endif %}
@@ -121,7 +125,7 @@
         <div class="navbar-text p-0 d-none d-xl-flex">
             <div class="row gap-5 ">
                 <div class="col-auto">
-                    <span class="text-dark-blue d-block fs-5">Контакты:</span>
+{#                    <span class="text-dark-blue d-block fs-5">Контакты:</span>#}
                     <a class="text-black fs-6 d-block ls-2" href="mailto:{{ contactService.getContacts.email }}">
                         {{ contactService.getContacts.email }}
                     </a>

@@ -37,11 +37,15 @@ h1 h2 h3 h4 h5 {
 }
 
 .text-light-blue {
-    color: #529AC6;
+    color: #529AC6!important;
 }
 
 .text-dark-blue {
-    color: #045F86;
+    color: #045F86!important;
+}
+
+#description>p {
+    margin-left: 3rem!important;
 }
 
 .btn-light-blue {
@@ -115,6 +119,14 @@ h1 h2 h3 h4 h5 {
         width: 30%;
     }
 }
+
+@media (min-width: 768px) {
+    .mt-195 {
+        margin-top: 1.95rem!important;
+    }
+}
+
+
 
 .text-darker-blue {
     color: #003d73!important;
