@@ -33,9 +33,9 @@
                 </div>
                 <div class="col-12 col-lg-7 py-2">
                     <h2 class="text-light-blue text-center mb-2">{{ s.title }}</h2>
-                    <p id="description">
+                    <div id="description">
                         {{ truncateHtmlService.truncate(s.description|raw)|raw }}
-                    </p>
+                    </div>
                     <div class="row">
                         <div class="row text-center">
                             <div class="col-12 mt-3">

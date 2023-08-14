@@ -44,8 +44,9 @@ h1 h2 h3 h4 h5 {
     color: #045F86!important;
 }
 
-#description>p {
-    margin-left: 3rem!important;
+#description {
+    margin-right: 1rem!important;
+    margin-left: 1rem!important;
 }
 
 .btn-light-blue {

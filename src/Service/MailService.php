@@ -43,7 +43,8 @@ class MailService
     {
         $email = (new TemplatedEmail())
             ->from('akagat.info@mail.ru')
-            ->to(new Address($_ENV['MAIL_TO_ORDERS'] ?? 'antondead1337@gmail.com'))
+            ->to(new Address($_ENV['MAIL_TO_ORDERS_1'] ?? 'antondead1337@gmail.com'))
+            ->addTo(new Address($_ENV['MAIL_TO_ORDERS_2'] ?? 'antondead1337@gmail.com'))
             ->subject('Новый заказ! | Авиакомпания "АГАТ"')
             ->htmlTemplate('emails/order.html.twig')
             ->context([

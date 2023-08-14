@@ -15,7 +15,7 @@ class TruncateHtmlService
      *
      * @return string Trimmed string.
      */
-    public function truncate($text, $length = 500, $ending = '...', $exact = false, $considerHtml = true): string
+    public function truncate($text, $length = 420, $ending = '...', $exact = false, $considerHtml = true): string
     {
         if ($considerHtml) {
             // if the plain text is shorter than the maximum length, return the whole text
