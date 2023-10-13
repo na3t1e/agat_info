@@ -5,6 +5,7 @@ twig:
         contactService: "@app.contactService"
         seoService: "@app.seoService"
         truncateHtmlService: "@app.truncateHtmlService"
+        baseUrl: '%env(BASE_URL)%'
 
     paths:
         '%kernel.project_dir%/vendor/sbyaute/star-rating-bundle/Resources/views': SbyauteStarRatingBundle

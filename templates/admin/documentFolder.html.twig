@@ -1,0 +1,119 @@
+{% extends 'baseAdmin.html.twig' %}
+{% form_theme documentFolderCreateForm 'bootstrap_5_layout.html.twig' %}
+{% form_theme documentFolderEditForm 'bootstrap_5_layout.html.twig' %}
+{% block title %}АК АГАТ | Администратор - Документы (папки){% endblock %}
+
+{% block body %}
+
+    <div class="row d-block d-lg-none">
+        <button class="btn btn-success mb-5 fs-2" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Создать
+        </button>
+    </div>
+    <button class="d-none d-lg-flex btn btn-success float-end mb-5" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Создать
+    </button>
+    <div class="row">
+        <h1 class="text-center">Документы</h1>
+    </div>
+    <div class="offcanvas offcanvas-top " tabindex="-1" id="offcanvasTop" data-bs-backdrop="true"
+         aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasTopLabel">Создать запись</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            {{ form(documentFolderCreateForm) }}
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-bottom " tabindex="-1" id="offcanvasBottom" data-bs-backdrop="true"
+         aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Изменить запись</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            {{ form(documentFolderEditForm) }}
+            <button class="btn btn-danger" onclick="deleteProduct(document.getElementById('document_folder_edit_id').value)">
+                Удалить запись
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for s in documents %}
+            <div class="col-auto mb-3">
+                <ul class="list-group">
+                    <a class="col-auto btn btn-outline-primary rounded-bottom-0"
+                       onclick='openEditForm(
+                               "{{ s.id }}",
+                               "{{ s.name }}",
+                               "{{ s.isEnabled }}",
+                               )'
+                    >Редактировать</a>
+                    <li class="list-group-item">
+                        <span class="text-secondary">Название: </span>{{ s.name }}
+                    </li>
+                    <li class="list-group-item">
+                        {#                        {% if s.image is not null and s.image is not empty %}#}
+                        {#                            <div class="col-4 ms-3 p-0"#}
+                        {#                                 style="height: 200px; background: url({{ asset('files/'~s.filename) }}) no-repeat; background-size: contain;">#}
+                        {#                                <div onclick="window.location = '{{ path('app_aircraft_consult_service_delete_image', {id: s.id, name: s.image }) }}'"#}
+                        {#                                     class="btn btn-danger p-1 rounded-0 float-end fs-6" style="line-height: 9px">x#}
+                        {#                                </div>#}
+                        {#                                <div onclick="launchModalPhoto('{{ s.image }}','')"#}
+                        {#                                     class="btn btn-success p-1 rounded-0 float-start fs-7"#}
+                        {#                                     style="line-height: 9px">#}
+                        {#                                    <i class="bi bi-arrows-fullscreen fs-7"></i>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                        {% endif %}#}
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        function openCreateFormError() {
+            var myOffcanvas = document.getElementById('offcanvasTop')
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+            bsOffcanvas.show()
+        }
+
+        function openEditFormError() {
+            var myOffcanvas = document.getElementById('offcanvasBottom')
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+            bsOffcanvas.show()
+        }
+
+        function openEditForm(id, name, isEnabled) {
+            event.stopPropagation()
+            var myOffcanvas = document.getElementById('offcanvasBottom')
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+            bsOffcanvas.show()
+            document.getElementById('document_folder_edit_id').value = id;
+            document.getElementById('document_folder_edit_name').value = name;
+            if (isEnabled === "1") {
+                document.getElementById('document_folder_edit_isEnabled').checked = true;
+                document.getElementById('document_folder_edit_isEnabled').value = 1
+            } else {
+                document.getElementById('document_folder_edit_isEnabled').false = true;
+                document.getElementById('document_folder_edit_isEnabled').value = 0
+            }
+        }
+
+        function deleteProduct(id) {
+            window.location = '/document_folder/delete/' + id;
+        }
+    </script>
+
+    {% if createError == 1 %}
+        <script>openCreateFormError()</script>
+    {% endif %}
+    {% if editError == 1 %}
+        <script>openEditFormError()</script>
+    {% endif %}
+    {% include('./particles/modal_show_image.html.twig') %}
+{% endblock %}
