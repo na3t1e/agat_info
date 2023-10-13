@@ -79,6 +79,16 @@
                     <li><a class="dropdown-item text-start" href="{{ path('app_aircraft_consult_service') }}">Оценка соответствия<br> воздушных судов, консультации</a></li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown1" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <i class="fs-5 bi-calculator"></i><span class="ms-1 d-sm-inline">Документы</span>
+                </a>
+                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
+                    <li><a class="dropdown-item text-start" href="{{ path('app_document_folders') }}">Папки</a></li>
+                    <li><a class="dropdown-item text-start" href="{{ path('app_documents') }}">Документы</a></li>
+                </ul>
+            </li>
             <li class="nav-item">
                 <a href="{{ path('app_admin_menu') }}" class="nav-link text-truncate">
                     <i class="bi bi-file-earmark-person fs-5"></i><span class="ms-1 d-sm-inline">Настройки меню</span>
