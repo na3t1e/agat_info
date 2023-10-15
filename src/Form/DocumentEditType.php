@@ -58,7 +58,7 @@ class DocumentEditType extends AbstractType
             ->add('documentFolder', EntityType::class, [
                 'class' => DocumentFolder::class,
                 'choice_label' => 'name',
-                'label' => $this->translator->trans('general.document')
+                'label' => $this->translator->trans('general.document_folder')
             ])
             ->add('save', SubmitType::class, [
                 'attr' => [
