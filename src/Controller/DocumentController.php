@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DocumentController extends AbstractController
 {
-    #[Route('/documents', name: 'app_contact')]
+    #[Route('/documents', name: 'app_documents_main')]
     public function index(DocumentFolderRepository $documentFolderRepository): Response
     {
         $folders = $documentFolderRepository->findBy([

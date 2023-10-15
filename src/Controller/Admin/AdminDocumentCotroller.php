@@ -20,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminDocumentCotroller extends AbstractController
 {
 
-    #[Route('/admin/documents', name: 'app_documents')]
+    #[Route('/admin/documents', name: 'app_admin_documents')]
     public function documents(
         Request                                    $request,
         DocumentRepository $documentRepository,
@@ -89,7 +89,7 @@ class AdminDocumentCotroller extends AbstractController
             ]);
     }
 
-    #[Route('/admin/document_folder/delete/{id}', name: 'app_document_delete')]
+    #[Route('/admin/document/delete/{id}', name: 'app_document_delete')]
     public function deleteDocument(
         DocumentRepository $documentRepository,
                                                    $id,
@@ -99,7 +99,7 @@ class AdminDocumentCotroller extends AbstractController
         $document = $documentRepository->find($id);
         $entityManager->remove($document);
         $entityManager->flush();
-        return $this->redirectToRoute("app_documents");
+        return $this->redirectToRoute("app_admin_documents");
     }
 
 

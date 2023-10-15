@@ -81,7 +81,7 @@ class AdminDocumentFolderController extends AbstractController
         $document = $documentRepository->find($id);
         $entityManager->remove($document);
         $entityManager->flush();
-        return $this->redirectToRoute("app_documents");
+        return $this->redirectToRoute("app_document_folders");
     }
 
 }
