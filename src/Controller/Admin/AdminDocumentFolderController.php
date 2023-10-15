@@ -73,7 +73,7 @@ class AdminDocumentFolderController extends AbstractController
 
     #[Route('/document_folder/delete/{id}', name: 'app_document_folder_delete')]
     public function deleteDocument(
-        DocumentRepository $documentRepository,
+        DocumentFolderRepository $documentRepository,
                            $id,
         EntityManagerInterface                     $entityManager
     ): Response
