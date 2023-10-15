@@ -35,7 +35,7 @@
         </div>
         <div class="offcanvas-body">
             {{ form(documentFolderEditForm) }}
-            <button class="btn btn-danger" onclick='(deleteProduct(document.getElementById(`document_folder_edit_id`).value))'>
+            <button class="btn btn-danger" onclick='this.deleteProduct(document.getElementById(`document_folder_edit_id`).value)'>
                 Удалить запись
             </button>
         </div>
