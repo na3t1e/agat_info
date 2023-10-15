@@ -71,7 +71,7 @@ class AdminDocumentFolderController extends AbstractController
             ]);
     }
 
-    #[Route('/admin/documentFolder/delete/{id}', name: 'app_document_folder_delete')]
+    #[Route('/documentFolder/delete/{id}', name: 'app_document_folder_delete')]
     public function deleteDocument(
         DocumentRepository $documentRepository,
                            $id,
