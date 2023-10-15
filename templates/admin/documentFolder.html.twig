@@ -35,7 +35,7 @@
         </div>
         <div class="offcanvas-body">
             {{ form(documentFolderEditForm) }}
-            <button class="btn btn-danger" onclick='this.deleteProduct(document.getElementById(`document_folder_edit_id`).value)'>
+            <button class="btn btn-danger" onclick="deleteProduct()">
                 Удалить запись
             </button>
         </div>
@@ -104,7 +104,8 @@
             }
         }
 
-        function deleteProduct(id) {
+        function deleteProduct() {
+            let id = document.getElementById(`document_folder_edit_id`).value
             window.location = '/document_folder/delete/' + id;
         }
     </script>

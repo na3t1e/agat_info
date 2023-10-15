@@ -35,7 +35,7 @@
         </div>
         <div class="offcanvas-body">
             {{ form(documentEditForm) }}
-            <button class="btn btn-danger" onclick='this.deleteProduct(document.getElementById(`document_edit_id`).value)'>
+            <button class="btn btn-danger" onclick="deleteProduct()">
                 Удалить запись
             </button>
         </div>
@@ -60,19 +60,19 @@
                         <span class="text-secondary">Описание: </span>{{ s.description|raw }}
                     </li>
                     <li class="list-group-item">
-{#                        {% if s.image is not null and s.image is not empty %}#}
-{#                            <div class="col-4 ms-3 p-0"#}
-{#                                 style="height: 200px; background: url({{ asset('files/'~s.filename) }}) no-repeat; background-size: contain;">#}
-{#                                <div onclick="window.location = '{{ path('app_aircraft_consult_service_delete_image', {id: s.id, name: s.image }) }}'"#}
-{#                                     class="btn btn-danger p-1 rounded-0 float-end fs-6" style="line-height: 9px">x#}
-{#                                </div>#}
-{#                                <div onclick="launchModalPhoto('{{ s.image }}','')"#}
-{#                                     class="btn btn-success p-1 rounded-0 float-start fs-7"#}
-{#                                     style="line-height: 9px">#}
-{#                                    <i class="bi bi-arrows-fullscreen fs-7"></i>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        {% endif %}#}
+                        {#                        {% if s.image is not null and s.image is not empty %} #}
+                        {#                            <div class="col-4 ms-3 p-0" #}
+                        {#                                 style="height: 200px; background: url({{ asset('files/'~s.filename) }}) no-repeat; background-size: contain;"> #}
+                        {#                                <div onclick="window.location = '{{ path('app_aircraft_consult_service_delete_image', {id: s.id, name: s.image }) }}'" #}
+                        {#                                     class="btn btn-danger p-1 rounded-0 float-end fs-6" style="line-height: 9px">x #}
+                        {#                                </div> #}
+                        {#                                <div onclick="launchModalPhoto('{{ s.image }}','')" #}
+                        {#                                     class="btn btn-success p-1 rounded-0 float-start fs-7" #}
+                        {#                                     style="line-height: 9px"> #}
+                        {#                                    <i class="bi bi-arrows-fullscreen fs-7"></i> #}
+                        {#                                </div> #}
+                        {#                            </div> #}
+                        {#                        {% endif %} #}
                     </li>
                 </ul>
             </div>
@@ -111,7 +111,8 @@
 
         }
 
-        function deleteProduct(id) {
+        function deleteProduct() {
+            let id = document.getElementById(`document_edit_id`).value;
             window.location = '/document/delete/' + id;
         }
     </script>
