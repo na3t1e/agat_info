@@ -25,3 +25,5 @@ general:
   path: Путь
   title: Заголовок
   keywords: Ключевые фразы
+  document: Документ
+  document_folder: Папка документов

@@ -51,15 +51,16 @@ class DocumentType extends AbstractType
 
                 'label' => $this->translator->trans('general.description')])
             ->add('filename', FileType::class, [
-                'required' => true,
+                'required' => false,
                 'mapped' => false,
                 'attr' => [
                     'accept' => 'application/pdf, application/x-pdf'
                 ],
-                'label' => $this->translator->trans('general.images')])
+                'label' => $this->translator->trans('general.document')])
             ->add('documentFolder', EntityType::class, [
                 'class' => DocumentFolder::class,
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'label' => $this->translator->trans('general.document')
             ])
             ->add('save', SubmitType::class, [
                 'attr' => [
