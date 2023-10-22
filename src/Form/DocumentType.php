@@ -60,6 +60,7 @@ class DocumentType extends AbstractType
             ->add('documentFolder', EntityType::class, [
                 'class' => DocumentFolder::class,
                 'choice_label' => 'name',
+                'required' => false,
                 'label' => $this->translator->trans('general.document_folder')
             ])
             ->add('save', SubmitType::class, [

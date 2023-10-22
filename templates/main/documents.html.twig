@@ -6,6 +6,22 @@
         <h1 class="header text-dark-blue">Документы</h1>
     </div>
     {% set break = false %}
+    {% for document in documents %}
+        <center><h3 class="mt-2">{{ document.title }}</h3></center>
+        {{ document.description|raw }}
+        <center>
+            <a class="fs-6 btn btn-dark-blue mt-2 mb-2" data-open-full="1"
+               href="{{ baseUrl }}{{ asset('files/'~document.filename) }}" target="_blank">
+                Открыть в полный экран
+            </a>
+        </center>
+        <div class="d-none d-xl-block">
+            <embed class="" data-embed="1" src="{{ asset('files/'~document.filename) }}" type="application/pdf"
+                   height="1200px"
+                   width="100%">
+        </div>
+        <hr>
+    {% endfor %}
     {% for folder in folders %}
 
         <button class="btn btn-light-blue col-12 mt-2" type="button" data-bs-toggle="collapse"

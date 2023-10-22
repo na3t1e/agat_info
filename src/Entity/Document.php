@@ -24,7 +24,7 @@ class Document
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'documents')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?DocumentFolder $documentFolder = null;
 
     public function getId(): ?int
