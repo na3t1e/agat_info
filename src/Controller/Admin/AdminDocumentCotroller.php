@@ -89,7 +89,7 @@ class AdminDocumentCotroller extends AbstractController
             ]);
     }
 
-    #[Route('/document/delete/{id}', name: 'app_document_delete')]
+    #[Route('/admin/document/delete/{id}', name: 'app_document_delete')]
     public function deleteDocument(
         DocumentRepository $documentRepository,
                                                    $id,
