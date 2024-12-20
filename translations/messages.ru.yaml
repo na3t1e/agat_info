@@ -20,10 +20,11 @@ general:
   createAt: Дата создания
   isVisible: Отображать на страницах
   phone: Телефонный номер
-  email: Почтовый адрес
+  email: Адрес электронной почты
   serviceType: Тип услуги
   path: Путь
   title: Заголовок
   keywords: Ключевые фразы
   document: Документ
   document_folder: Папка документов
+  message: Уточните конкретнее, что вам нужно

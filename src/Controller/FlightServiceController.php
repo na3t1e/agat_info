@@ -42,6 +42,7 @@ class FlightServiceController extends AbstractController
                     $orderForm->get('email')->getData(),
                     $orderForm->get('serviceType')->getData(),
                     "Услуги по выполнению авиационных работ",
+                    $orderForm->get('message')->getData(),
                 );
                 $bus->dispatch($order);
                 $uri = $request->attributes->get("_route");

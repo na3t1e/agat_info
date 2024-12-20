@@ -8,6 +8,8 @@ class Order {
     private string $serviceType;
     private string $serviceTitle;
 
+    private ?string $message;
+
     /**
      * @param string $fio
      * @param string $phone
@@ -15,13 +17,14 @@ class Order {
      * @param string $serviceType
      * @param string $serviceTitle
      */
-    public function __construct(string $fio, string $phone, string $email, string $serviceType, string $serviceTitle)
+    public function __construct(string $fio, string $phone, string $email, string $serviceType, string $serviceTitle, ?string $message = '')
     {
         $this->fio = $fio;
         $this->phone = $phone;
         $this->email = $email;
         $this->serviceType = $serviceType;
         $this->serviceTitle = $serviceTitle;
+        $this->message = $message;
     }
 
     /**
@@ -98,6 +101,16 @@ class Order {
         $this->serviceType = $serviceType;
     }
 
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): void
+    {
+        $this->message = $message;
+    }
+
     public function __toString(): string
     {
         return
@@ -105,7 +118,10 @@ class Order {
             "<b>Телефонный номер: </b>" . $this->getPhone() . "\n\n" .
             "<b>Почтовый адрес: </b>" . $this->getEmail() . "\n\n" .
             "<b>Тип услуги: </b>" . "<code>" . $this->getServiceType() . "</code>" . "\n\n" .
-            "<b>Раздел услуг: </b>" . "<code>" . $this->getServiceTitle() . "</code>" . "\n\n"
+            "<b>Раздел услуг: </b>" . "<code>" . $this->getServiceTitle() . "</code>" . "\n\n" .
+            "<b>Сообщение: </b>" . "<code>" . $this->getMessage() . "</code>" . "\n\n"
             ;
     }
+
+
 }

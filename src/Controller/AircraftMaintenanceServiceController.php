@@ -29,6 +29,7 @@ class AircraftMaintenanceServiceController extends AbstractController
                     $orderForm->get('email')->getData(),
                     $orderForm->get('serviceType')->getData(),
                     "Услуги технического обслуживания судов",
+                    $orderForm->get('message')->getData(),
                 );
                 $bus->dispatch($order);
                 $uri = $request->attributes->get("_route");

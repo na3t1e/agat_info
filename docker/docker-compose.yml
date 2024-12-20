@@ -1,0 +1,72 @@
+name: agat-info
+services:
+
+  # PHP Service
+  app:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    container_name: agat-info-app
+    volumes:
+      - ../:/var/www
+      - ./config/php/local.ini:/usr/local/etc/php/custom.d/custom.ini
+    command: php-fpm
+    working_dir: /var/www
+    networks: [
+        app_network
+    ]
+    ports:
+      - "9000:9000"
+    environment:
+      PHP_INI_SCAN_DIR: "/usr/local/etc/php/custom.d:/usr/local/etc/php/conf.d"
+    depends_on:
+        - db
+
+    # Nginx Service
+  webserver:
+    image: nginx:stable-alpine
+    container_name: agat-info-webserver
+    restart: unless-stopped
+    volumes:
+      - ../:/var/www
+      - ./config/ssl/:/etc/nginx/ssl
+      - ./config/nginx/sites-enabled/:/etc/nginx/sites-enabled
+      - ./config/nginx/hosts:/etc/hosts
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./logs/nginx:/var/log/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks: [
+        app_network
+    ]
+    depends_on:
+      - app
+
+
+  db:
+    platform: linux/amd64
+    image: mysql:5.7.37
+    container_name: agat-info-db
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./config/mysql/my.cnf:/etc/mysql/my.cnf
+      - ./db_backup:/home/backup
+    ports:
+      - "3306:3306"
+    networks: [
+      app_network
+    ]
+
+
+networks:
+  app_network:
+    driver: bridge

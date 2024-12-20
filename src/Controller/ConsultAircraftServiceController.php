@@ -28,6 +28,7 @@ class ConsultAircraftServiceController extends AbstractController
                     $orderForm->get('email')->getData(),
                     $orderForm->get('serviceType')->getData(),
                     "Услуги оценки соответствия воздушных судов, консультации",
+                    $orderForm->get('message')->getData(),
                 );
                 $bus->dispatch($order);
                 $uri = $request->attributes->get("_route");
