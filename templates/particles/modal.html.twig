@@ -22,6 +22,7 @@
                 </div>
 
                 {{ form_row(feedbackCreateForm.images) }}
+                {{ form_row(feedbackCreateForm.pd_agreement) }}
                 <div class="row text-center">
                     {{ form_row(feedbackCreateForm.save) }}
                 </div>
@@ -78,6 +79,17 @@
         orderModal.toggle();
     }
 
+
+    let checkbox = document.getElementById('feedback_write_pd_agreement')
+    let submit = document.getElementById('feedback_write_save')
+
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            submit.disabled = false
+        } else {
+            submit.disabled = true
+        }
+    })
 </script>
 
 {% if createError == 1 %}

@@ -28,3 +28,4 @@ general:
   document: Документ
   document_folder: Папка документов
   message: Уточните конкретнее, что вам нужно
+  pd_agreement: Я соглашаюсь на обработку <a href="/docs/personal.pdf" target="_blank">персональных данных</a>

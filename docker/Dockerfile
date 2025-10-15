@@ -4,7 +4,7 @@ ARG UID=${UID}
 ARG GID=${GID}
 
 RUN set -eux \
-    && echo https://dl-4.alpinelinux.org/alpine/v3.19/community/ >> /etc/apk/repositories \
+    && echo https://mirror.yandex.ru/mirrors/alpine/v3.21/community/ >> /etc/apk/repositories \
     && apk update \
     && apk upgrade \
     && apk add \

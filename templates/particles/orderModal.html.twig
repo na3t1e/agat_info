@@ -6,6 +6,12 @@
             <div class="modal-body">
                 {{ form_start(orderForm) }}
                 {{ form_widget(orderForm.name) }}
+                {{ form_row(orderForm.fio) }}
+                {{ form_row(orderForm.phone) }}
+                {{ form_row(orderForm.email) }}
+                {{ form_row(orderForm.serviceType) }}
+                {{ form_row(orderForm.message) }}
+                {{ form_widget(orderForm.pd_agreement) }}
                 {{ form_rest(orderForm) }}
                 {{ form_end(orderForm) }}
             </div>
@@ -26,6 +32,17 @@
         let orderModal = new bootstrap.Modal(document.getElementById('exampleModal'), {})
         orderModal.toggle();
     }
+
+    let checkbox = document.getElementById('order_pd_agreement')
+    let submit = document.getElementById('order_save')
+
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            submit.disabled = false
+        } else {
+            submit.disabled = true
+        }
+    })
 
 </script>
 

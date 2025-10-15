@@ -210,4 +210,112 @@
 <!-- Footer -->
 
 </body>
+
+{# Cookie consent banner and modal #}
+<style>
+    .cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:1060;background:rgba(0,0,0,.85);color:#fff;padding:.75rem 1rem}
+    .cookie-banner .btn{margin-left:.5rem}
+    .cookie-banner a{color:#9ad1ff}
+    .cookie-modal-backdrop{position:fixed;inset:0;z-index:1061;background:rgba(0,0,0,.5);display:none}
+    .cookie-modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1062;background:#fff;color:#000;max-width:840px;width:92%;max-height:80vh;overflow:auto;border-radius:.5rem;display:none}
+    .cookie-modal-header{padding:1rem 1rem .5rem 1rem;border-bottom:1px solid #eee;font-weight:600}
+    .cookie-modal-body{padding:1rem}
+    .cookie-modal-footer{padding:0 1rem 1rem 1rem;border-top:1px solid #eee;display:flex;justify-content:flex-end}
+    .cookie-close{background:transparent;border:0;font-size:1.25rem;line-height:1;cursor:pointer}
+    @media (prefers-reduced-motion:no-preference){.cookie-modal,.cookie-modal-backdrop{transition:opacity .2s ease}}
+</style>
+
+<div id="cookie-banner" class="cookie-banner" style="display:none">
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+        <div>
+            Мы используем файлы cookies. Оставаясь на нашем сайте, вы соглашаетесь на их использование.
+        </div>
+        <div class="d-flex align-items-center">
+            <button id="cookie-open-agreement" class="btn btn-outline-light btn-sm" type="button">Соглашение</button>
+            <button id="cookie-accept" class="btn btn-success btn-sm" type="button">ОК</button>
+        </div>
+    </div>
+    
+    <div id="cookie-modal-backdrop" class="cookie-modal-backdrop"></div>
+    <div id="cookie-modal" class="cookie-modal">
+        <div class="cookie-modal-header d-flex justify-content-between align-items-center">
+            <div>Соглашение на обработку файлов cookies</div>
+            <button id="cookie-modal-close" class="cookie-close" aria-label="Close">×</button>
+        </div>
+        <div class="cookie-modal-body">
+            <p>Соглашение на обработку файлов cookies<br>
+            Когда Вы посещаете Сайт: akagat.ru (далее — Сайт), Владелец Сайта (ООО "АК"Агат") (далее — Владелец Сайта) собирает и обрабатывает файлы cookie. Они содержат информацию о Ваших прошлых посещениях Сайта, сайтах (запросах), с которых Вы перешли на Сайт, присвоенные идентификаторы (ID), IP-адрес, сведения о местоположении, тип устройства, дату и время сессии, сведения о действиях на сайте, в том числе с использованием метрической программы Яндекс.Метрика, которая также могут размещать на Вашем устройстве файлы cookie и использовать Ваши данные на условиях, определенных операторами таких сервисов.</p>
+            <p>Владелец Сайта со всей ответственностью и в соответствии с законодательством Российской Федерации относится к защите персональных данных Пользователя Сайта. Обработка файлов cookie осуществляется Владельцем Сайта в той мере, в какой это необходимо для улучшения функционирования и оптимизации работы сайта. Сторонние cookie доступны операторам, размещающим их на этом сайте.</p>
+            <p>Если Вы не согласны с тем, чтобы мы использовали данный тип файлов, то Вы должны соответствующим образом установить настройки вашего браузера или не использовать Сайт. Продолжая использование Сайта, Вы как Пользователь подтверждаете свое согласие на использование cookie-файлов в соответствии с настоящей Политикой в отношении данного типа файлов на нижеследующих условиях:</p>
+            <p><strong>Использование cookie-файлов</strong><br>
+            Файлы cookie — небольшой фрагмент данных, который отправляется веб-сервером и хранится на компьютере Пользователя. Cookie-файлы могут использоваться для различных целей, но обычно используются для обеспечения эффективного функционирования сайта и сбора/хранения информации о пользовательских настройках. Другими словами, cookie-файлы делают использование Интернета проще, потому что обеспечивают пользователям персонализированный опыт использования сайта и удобство навигации по нему. Cookie являются пассивными файлами и не могут распространить компьютерные вирусы или другое вредоносное программное обеспечение.</p>
+            <p>Когда Вы посещаете Сайт: akagat.ru мы собираем и обрабатываем файлы cookie. Они содержат информацию о Ваших прошлых посещениях Сайта, сайтах (запросах), с которых вы перешли на Сайт, присвоенные идентификаторы (ID), IP-адрес, сведения о местоположении, тип устройства, дату и время сессии, сведения о действиях на сайте, в том числе с использованием метрической программы Яндекс.Метрика, которые также могут размещать на Вашем устройстве файлы cookie и использовать Ваши данные на условиях, определенных операторами таких сервисов.</p>
+            <p><strong>Категории используемых cookies</strong><br>
+            Cookies, которые используются на этом сайте делятся на категории.<br>
+            1. Файлы сookie, которые собирает Сайт. Минимальный набор сookie, использование которых необходимо для корректной работы сайта;<br>
+            2. Cookie, добавленные на страницы Сайта сторонними поставщиками, таким как Яндекс (перечень cookie обновляется сторонними поставщиками, Владелец Сайта не несет ответственности за его изменение);<br>
+            А. Cookie, которые собирает Яндекс.Метрика: ym_metrika_enabled, _ym_isad, _ym_uid, _ym_d, yabs-sid, _ym_debug, _ym_mp2_substs*, _ym_visorc_*, _ym_hostIndex, _ym_mp2_track*, i, yandexuid, yuidss, ymex, usst, _ym*_lastHit, _ym*_lsid, _ym*_reqNum, _ym_retryReqs, zz (их описание можно прочитать на официальном сайте Яндекса: https://yandex.ru/support/metrica/general/cookie-usage.html).</p>
+            <p><strong>Типы используемых сookie:</strong><br>
+            <em>Сессионные (временные) cookie</em> — данные существуют только пока открыт браузер.<br>
+            <em>Эксплуатационные сookie</em> — обеспечивают работоспособность и функциональность сайта; вся информация анонимна.<br>
+            <em>Сторонние cookie</em> — размещаются сторонними сервисами (в частности Яндекс.Метрика).</p>
+            <p><strong>Контроль и удаление cookie:</strong><br>
+            Пользователь всегда может контролировать файлы cookie на своем устройстве. Большинство браузеров позволяют блокировать, удалять или отключать cookies. Подробнее в справке браузера (Chrome, Opera, Firefox, Edge, Internet Explorer).</p>
+            <p>Изменив настройки браузера, Вы можете отклонить cookie-файлы и/или получать предупреждение перед сохранением cookie-файла. При отключении cookie корректная работа сайта не гарантируется.</p>
+            <p><strong>Использование Яндекс.Метрики.</strong><br>
+            Сайт использует Яндекс.Метрику. Эта система использует cookies-файлы с целью сбора данных для анализа. Условия использования: https://yandex.ru/legal/metrica_termsofuse.<br>
+            Запретить использование cookie-файлов Яндекс.Метрики и регистрацию визита: https://yandex.ru/support/metrica/general/opt-out.html.</p>
+            <p>Владелец Сайта не несет ответственности за файлы cookie, используемые на сторонних сайтах, на которые размещены ссылки на Сайте. Политика может быть изменена Владельцем Сайта без специального уведомления. Рекомендуем регулярно проверять условия Политики. Продолжение использования Сайта означает принятие изменений.</p>
+        </div>
+        <div class="cookie-modal-footer">
+            <button id="cookie-modal-ok" class="btn btn-primary" type="button">ОК</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function(){
+        var STORAGE_KEY = 'cookie_consent_accepted_v1';
+        function hasConsent(){
+            try{ return localStorage.getItem(STORAGE_KEY) === '1'; }catch(e){ return false; }
+        }
+        function setConsent(){
+            try{ localStorage.setItem(STORAGE_KEY,'1'); }catch(e){}
+        }
+        function showBanner(){ var b=document.getElementById('cookie-banner'); if(b){ b.style.display='block'; }}
+        function hideBanner(){ var b=document.getElementById('cookie-banner'); if(b){ b.style.display='none'; }}
+        function openModal(){
+            var m=document.getElementById('cookie-modal');
+            var bd=document.getElementById('cookie-modal-backdrop');
+            if(m&&bd){ m.style.display='block'; m.style.opacity='1'; bd.style.display='block'; bd.style.opacity='1'; }
+        }
+        function closeModal(){
+            var m=document.getElementById('cookie-modal');
+            var bd=document.getElementById('cookie-modal-backdrop');
+            if(m&&bd){ m.style.display='none'; bd.style.display='none'; }
+        }
+        function bind(){
+            var openBtn=document.getElementById('cookie-open-agreement');
+            var okBtn=document.getElementById('cookie-accept');
+            var okModal=document.getElementById('cookie-modal-ok');
+            var closeBtn=document.getElementById('cookie-modal-close');
+            var backdrop=document.getElementById('cookie-modal-backdrop');
+            if(openBtn){ openBtn.addEventListener('click', openModal); }
+            function accept(){ setConsent(); closeModal(); hideBanner(); }
+            if(okBtn){ okBtn.addEventListener('click', accept); }
+            if(okModal){ okModal.addEventListener('click', accept); }
+            if(closeBtn){ closeBtn.addEventListener('click', closeModal); }
+            if(backdrop){ backdrop.addEventListener('click', closeModal); }
+        }
+        if(!hasConsent()){
+            if(document.readyState === 'loading'){
+                document.addEventListener('DOMContentLoaded', function(){ showBanner(); bind(); });
+            } else {
+                showBanner(); bind();
+            }
+        }
+    })();
+</script>
+
+</body>
 </html>
